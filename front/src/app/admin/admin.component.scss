@@ -1,0 +1,48 @@
+@import '../@themes/styles.scss';
+
+$side-nav-width: 175px;
+
+main {
+  display: flex;
+  margin-left: $side-nav-width;
+  background-color: #F5F5F5;
+  height: 100%;
+
+  .modules-section {
+    width: 20%;
+    box-shadow: $default-shadow;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $side-nav-width;
+  background-color: black;
+  box-shadow: $default-shadow;
+
+  .menu-list {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+
+    .menu-item:hover {
+      background-color: #424242;
+
+      a {
+        color: #EEEEEE;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-content: space-between;
+    padding: 15px;
+    text-decoration: none;
+    color: #FAFAFA;
+
+  }
+}

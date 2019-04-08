@@ -1,0 +1,15 @@
+<div class="modulesContainer" [hidden]="!show">
+  <div class="module m-b-40" *ngFor="let module of modules$ | async as modules">
+    <div class="module-image" [style.background]="'url(' + module.image + ')'">
+      <!-- <span>
+        {{module.displayName}}
+      </span> -->
+    </div>
+    <!-- <br> -->
+    <div class="module-desc">
+      <span>
+        {{module.displayName}}
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+@import '../../../@themes/styles.scss';
+
+$module-width: 100px;
+$module-height: 100px;
+
+.modulesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  padding: 30px;
+  background-color: #546E7A;
+  width: 100%;
+  height: 100%;
+
+  .module {
+    display: flex;
+    flex-direction: column;
+    width: $module-width;
+    // height: auto;
+    // border: 1px solid #B0BEC5;
+    background-color: #78909C;
+    box-shadow: $default-shadow;
+
+    &:hover {
+      border: 1px solid #777;
+    }
+
+    .module-image {
+      width: $module-width;
+      height: $module-height;
+      background-repeat: no-repeat;
+    }
+
+    .module-desc {
+      text-align: center;
+      font-size: .8em;
+      background-color: #ccc;
+    }
+  }
+}

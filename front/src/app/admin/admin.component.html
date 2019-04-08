@@ -1,0 +1,17 @@
+<nav class="side-menu">
+  <ul class="menu-list">
+    <li #menus class="menu-item" *ngFor="let menu of menus$ | async as menus">
+      <a [href]="" class="menu" (click)="onMenuItemClick(menu.title)">
+        <fa-icon [icon]="menu.icon" [styles]="{'color': 'white'}" [classes]="['menu-icon']"></fa-icon>
+        <span class="m-l-20">{{menu.title}}</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <section class="modules-section" *ngIf="showModules">
+    <app-modules></app-modules>
+  </section>
+  
+</main>
