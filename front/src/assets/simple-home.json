@@ -1,0 +1,3 @@
+{
+    "html": "<header style=\"text-align: center\"><h3>Simple Home Template</h3></header><main><section><img src=\"assets/images/khe-sanh.png\" alt=\"\"></section><section><article class=\"contentHolder\">Left</article><article class=\"contentHolder\">Middle</article><article class=\"contentHolder\">Right</article></section></main>"
+}

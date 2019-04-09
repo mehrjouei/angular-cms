@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { Module } from 'src/app/models/module';
 
@@ -9,6 +9,8 @@ import { Module } from 'src/app/models/module';
 })
 export class ModulesComponent implements OnInit {
   modules$: Observable<Module[]>;
+
+  @Output() select = new EventEmitter();
 
   constructor() { }
 
@@ -41,6 +43,10 @@ export class ModulesComponent implements OnInit {
       id: 5, name: 'star_module', displayName: 'Star', image: 'assets/images/star.png',
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
     }]);
+  }
+
+  onModuleClick() {
+    this.select.emit('emitted!');
   }
 
 }

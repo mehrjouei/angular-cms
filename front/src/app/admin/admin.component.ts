@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { Menu } from 'src/app/models/menu';
-
-import { faEdit, faPuzzlePiece, faFile, faCogs, faFileCode } from '@fortawesome/free-solid-svg-icons';
+import { GuestDirective } from './guest.directive';
+import { HomeComponent } from '../custom-pages/home/home.component';
 
 @Component({
   selector: 'app-admin',
@@ -12,32 +12,27 @@ import { faEdit, faPuzzlePiece, faFile, faCogs, faFileCode } from '@fortawesome/
 export class AdminComponent implements OnInit {
   menus$: Observable<Menu[]>;
 
-  // @ViewChildren('menus') menusRef;
-  showModules = false;
+  @ViewChild(GuestDirective) guestElement: GuestDirective;
+  guestElementOutlet: ViewContainerRef;
 
-  constructor() { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
     this.menus$ = this.getMenus();
+    this.guestElementOutlet = this.guestElement.viewContainerRef;
   }
 
   getMenus(): Observable<Menu[]> {
-    return of([{ title: 'edit', url: '.', icon: faEdit },
-    { title: 'Modules', url: '.', icon: faPuzzlePiece },
-    { title: 'Pages', url: '.', icon: faFile },
-    { title: 'Settings', url: '.', icon: faCogs },
-    { title: 'Custom Pages', url: '.', icon: faFileCode }]);
+    return of([{ title: 'edit', url: '.', icon: 'fa-edit' },
+    { title: 'Modules', url: '.', icon: 'fa-puzzle-piece' },
+    { title: 'Pages', url: '.', icon: 'fa-file' },
+    { title: 'Settings', url: '.', icon: 'fa-cogs' },
+    { title: 'Custom Pages', url: '.', icon: 'fa-file-code' }]);
   }
 
-  onMenuItemClick(menuTitle: string) {
-    switch (menuTitle) {
-      case 'Modules':
-        this.showModules = !this.showModules;
-        break;
-
-      default:
-        break;
-    }
+  onModuleSelected(param) {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(HomeComponent);
+    this.guestElementOutlet.createComponent(componentFactory);
   }
 
 }

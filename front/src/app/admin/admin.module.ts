@@ -2,17 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 // import { AdminRoutingModule } from './admin-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModulesComponent } from './components/modules/modules.component';
+import { GuestDirective } from './guest.directive';
+import { CustomPagesModule } from '../custom-pages/custom-pages.module';
+import { HomeComponent } from '../custom-pages/home/home.component';
 
 @NgModule({
-  declarations: [AdminComponent, ModulesComponent],
+  declarations: [AdminComponent, ModulesComponent, GuestDirective],
   imports: [
     CommonModule,
+    HttpClientModule,
     // AdminRoutingModule,
-    FontAwesomeModule
+    CustomPagesModule
   ],
-  exports: [AdminComponent]
+  exports: [AdminComponent],
+  entryComponents: [HomeComponent]
 })
 export class AdminModule { }
