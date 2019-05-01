@@ -5,12 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class TempAuthService {
+export class AuthService {
+  redirectUrl;
 
   constructor(private httpService: HttpClient) { }
 
-  getToken(username: string, password: string) {
+  getToken(dto) {
     return this.httpService
-      .post(`${environment.baseUrl}/auth/authenticate/`, { username, password });
+      .post(`${environment.baseUrl}/auth/authenticate/`, dto);
   }
 }

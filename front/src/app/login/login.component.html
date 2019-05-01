@@ -1,0 +1,20 @@
+<div class="main-container">
+  <div class="left-container">
+    <img src="/assets/images/dark-logo-mini.png" alt="">
+  </div>
+  <div class="right-container">
+    <h3>We are <span>Netap</span></h3>
+    <h5>Please log in to add more outstanding features!</h5>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div>
+        <i class="fa fa-envelope"></i>
+        <input type="text" placeholder="Email" formControlName="email">
+      </div>
+      <div>
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="Password" formControlName="password">
+      </div>
+      <button type="submit" [disabled]="!form.valid">Login</button>
+    </form>
+  </div>
+</div>

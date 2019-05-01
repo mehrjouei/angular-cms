@@ -8,13 +8,13 @@ import {
   Route
 } from '@angular/router';
 
-import { TempAuthService } from '../temp-auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanLoad {
-  constructor(private authService: TempAuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -40,6 +40,8 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (localStorage.getItem('API_TOKEN')) {
       return true;
     }
+
+    this.authService.redirectUrl = url;
 
     this.router.navigate(['/login']);
     return false;

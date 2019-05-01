@@ -8,13 +8,17 @@ import { registerLocaleData } from '@angular/common';
 import localeFa from '@angular/common/locales/fa';
 
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

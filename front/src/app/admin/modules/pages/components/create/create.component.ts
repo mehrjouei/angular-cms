@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { PageService } from '../../../../../services/page.service';
@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None // TODO wtf!? who added this
 })
 export class CreateComponent implements OnInit {
 
@@ -42,7 +42,6 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     forkJoin([this.roleService.list(), this.templateService.list()])
       .subscribe((resolves: any[]) => {
-        debugger;
         const roles = resolves[0].data as Role[];
         const templates = resolves[1].data as Template[];
         this.roles = roles;
