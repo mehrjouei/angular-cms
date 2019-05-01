@@ -1,0 +1,50 @@
+<!-- duplicate of create -->
+<card>
+  <card-header [title]="'ویرایش قالب'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="name">نام:</label>
+              <input class="form-control" type="text" name="name" placeholder="نام" formControlName="name" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="image">عکس:</label>
+              <input class="form-control" type="text" name="image" placeholder="عکس" formControlName="image" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="assets">Assets:</label>
+              <textarea class="form-control" name="assets" style="height:250px; direction: ltr" formControlName="assets"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="html">Html:</label>
+              <textarea class="form-control" name="html" style="height:250px; direction: ltr" formControlName="html"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          تأیید
+        </button>
+        <button routerLink="/admin/templates/list" class="btn btn-default" type="submit">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </card-body>
+</card>

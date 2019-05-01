@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <label>ماژول:</label>
+  <ul id="moduleList">
+    <li *ngFor="let module of modules">
+      <a href="javascript:void(0)" (click)="selected=module._id" [ngClass]="selected==module._id?'selected':''">
+        <div>
+          <span class="fa fa-cube"></span>
+          <span>{{module.name}}</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <input  formControlName="selected" [(ngModel)]="selected" type="hidden">
+
+  <label>عنوان:</label>
+  <input  placeholder="عنوان" formControlName="title" type="text">
+  <label>قاب:</label>
+  <select formControlName="pane" type="text">
+    <option *ngFor="let i of panes" [value]="i.dataset.pane">{{i.dataset.pane}}</option>
+  </select>
+  <label>طرح قاب:</label>
+  <select formControlName="container" placeholder="pane" type="text">
+    <option *ngFor="let container of containers" [value]="container._id">{{container.name}}</option>
+  </select>
+  <button class="btn btn-success" type="submit" [disabled]="!form.valid">افزودن ماژول</button>
+</form>

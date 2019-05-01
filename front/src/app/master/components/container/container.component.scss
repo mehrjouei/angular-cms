@@ -1,0 +1,24 @@
+.containerWrapper {
+  position: relative;
+
+  .btn-list {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+
+    &>span{
+      vertical-align: middle;
+      color:white;
+      cursor: pointer;
+      z-index: 999;
+      display: inline-block;
+      &.edit {
+        margin-left: 8px;
+      }
+
+      &.remove {
+        // margin-left:5px;
+      }
+    }
+  }
+}

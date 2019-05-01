@@ -1,0 +1,84 @@
+<!-- duplicate of create -->
+<card>
+  <card-header [title]="'ویرایش پست'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="title">عنوان</label>
+                  <input class="form-control" type="text" name="title" placeholder="عنوان" formControlName="title" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="slug">شناسه</label>
+                  <input class="form-control" type="text" name="slug" placeholder="شناسه" formControlName="slug" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="summary">خلاصه</label>
+                  <input class="form-control" type="text" name="summary" placeholder="خلاصه" formControlName="summary" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="content">نام:</label>
+                  <input class="form-control" type="text" name="content" placeholder="محتوا" formControlName="content" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="categories">دسته ها</label>
+                  <select class="form-control" type="text" name="categories" placeholder="دسته ها" formControlName="categories" required multiple>
+                    <option *ngFor="let cat of categories" [value]="cat._id">{{cat.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="image">عکس</label>
+                  <input class="form-control" type="text" name="image" placeholder="عکس" formControlName="image" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="tags">تگ ها</label>
+                  <input class="form-control" type="text" name="tags" placeholder="تگ ها" formControlName="tags" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <div>
+                  <label for="isDraft">مخفی؟</label>
+                  <input class="form-control" type="checkbox" name="isDraft" placeholder="مخفی؟" formControlName="isDraft">
+                </div>
+              </div>
+            </div>
+          </div>
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          تأیید
+        </button>
+        <button routerLink="/admin/containers/list" class="btn btn-default" type="submit">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </card-body>
+</card>

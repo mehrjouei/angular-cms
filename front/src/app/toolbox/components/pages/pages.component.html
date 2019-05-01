@@ -1,0 +1,52 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <label>
+    عنوان:
+    <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    آدرس:
+    <input type="text" formControlName="url">
+  </label>
+
+  <label>
+    پوسته:
+    <select formControlName="template">
+      <option *ngFor="let template of templates" [value]="template._id">
+        <div>
+          <span>{{template._id}}</span>
+          <span>{{template.html}}</span>
+        </div>
+      </option>
+    </select>
+  </label>
+
+  <label>
+    دسترسی ها:
+    <select formControlName="roles">
+      <option *ngFor="let role of roles" [value]="role._id">
+        <div>
+          <span>{{role.name}}</span>
+          <span>{{role.description}}</span>
+        </div>
+      </option>
+    </select>
+  </label>
+
+  <label>
+    تگ ها:
+  </label>
+    <input type="text" formControlName="tags">
+
+  <label>
+    Asset ها:
+  </label>
+    <input type="text" formControlName="assets">
+
+  <label>
+    نمایش در منو?:
+  </label>
+    <input type="checkbox" formControlName="isInMenu">
+
+  <button class="btn btn-success" type="submit">ثبت صفحه جدید</button>
+</form>

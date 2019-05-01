@@ -1,0 +1,13 @@
+<div class="inAppModal">
+  <div class="header">
+    <!-- TODO bloody image path -->
+    <img class="close" (click)="onOverlayClicked($event)" src="assets/images/close.png" alt="">
+    {{this.headerTitle}}
+  </div>
+  <div class="body">
+    <ng-template appInsertion></ng-template>
+  </div>
+</div>
+<div class="modalShadow" (click)="onOverlayClicked($event)">
+
+</div>
