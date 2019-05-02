@@ -1,0 +1,21 @@
+<!-- <div [innerHTML]="data.content"></div> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div>
+          <label for="html">html</label>
+          <input class="form-control" type="text" name="html" placeholder="html" formControlName="html" required>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnsBox">
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      تأیید
+    </button>
+    <button class="btn btn-default" type="submit" (click)="onCancel($event)">
+      انصراف
+    </button>
+  </div>
+</form>

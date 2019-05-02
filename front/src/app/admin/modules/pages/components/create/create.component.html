@@ -1,0 +1,78 @@
+<card>
+  <card-header [title]="'ایجاد صفحه'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="container">
+        <div class="row">
+        <div class="col-sm">
+          <div>
+            <label for="text">عنوان:</label>
+            <input class="form-control" type="text" name="text" placeholder="Title" formControlName="title" required>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div>
+            <label for="slug">آدرس:</label>
+            <input class="form-control" type="text" name="slug" placeholder="Slug" formControlName="slug" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+            <label for="slug">قالب:</label>
+            <select class="form-control" formControlName="template">
+              <option *ngFor="let template of templates" [value]="template._id">{{template.name}}</option>
+            </select>
+        </div>
+        <div class="col-sm">
+            <div>
+              <label for="text">تگ ها:</label>
+              <input class="form-control" type="text" formControlName="tags">
+            </div>
+          </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          <div>
+            <label for="text">دسترسی:</label>
+            <select class="form-control" style="height:100px;" multiple="" formControlName="roles">
+              <option *ngFor="let role of roles" [value]="role._id">{{role.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <div>
+            <label for="assets">Assets:</label>
+            <textarea class="form-control" name="assets" style="height:100px; direction: ltr" formControlName="assets"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div class="field">
+            <div>
+              <label for="isInMenu">نمایش در منو:</label>
+              <input name="isInMenu" type="checkbox" formControlName="isInMenu">
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          ثبت صفحه
+        </button>
+        <button routerLink="/admin/pages/list" class="btn btn-default" type="submit">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </card-body>
+</card>

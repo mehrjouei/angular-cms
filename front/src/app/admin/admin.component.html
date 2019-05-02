@@ -1,27 +1,7 @@
-<nav class="side-menu">
-  <ul>
-    <li *ngFor="let menu of menus$ | async as menus">
-      <a href="javascript:void(0)">
-        <i [class]="'fa menu-icon ' + menu.icon"></i>
-        <span class="nav-text">{{menu.title}}</span>
-      </a>
-      <article class="sub-side-menu">
-        <app-modules (select)="onModuleSelected($event)"></app-modules>
-      </article>
-    </li>
-  </ul>
-  <ul class="logout">
-    <li>
-      <a href="">
-        <i class="fa fa-power-off"></i>
-        <span class="nav-text">
-          Logout
-        </span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<main>
-    <ng-template appGuest></ng-template>
-</main>
+<div id="adminPanel-body">
+  <app-admin-header></app-admin-header>
+  <app-admin-menu></app-admin-menu>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

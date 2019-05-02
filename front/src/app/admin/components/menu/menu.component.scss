@@ -1,0 +1,30 @@
+.side-bar{
+    background-color: #2c3136;
+    position: fixed;
+    right:0px;
+    top:70px;
+    width:250px;
+    height:100vh;
+    height:calc(100vh - 70px);
+    .title{
+        padding:10px;
+        color:white;
+        font-size: 13px;
+    }
+    .list{
+        margin:0px;
+        padding:0px;
+        li{
+            padding:10px 13px;
+            font-size: 13px;
+            color: #a5a9ad;
+            cursor: pointer;
+            transition: all 200ms linear;
+            border:2px solid transparent;
+            &:hover,&.selected{
+                background-color: rgba(255,255,255,.09);
+                border-right:2px solid #f91942;
+            }
+        }
+    }
+}

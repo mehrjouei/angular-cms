@@ -1,0 +1,14 @@
+<div class="containerWrapper">
+  <div  class="btn-list">
+    <span class="edit" (click)="onEdit($event)">
+      <i class="fa fa-edit"></i>
+    </span>
+    <span class="remove" (click)="onRemove($event)">
+      <i class="fa fa-trash-alt"></i>
+    </span>
+  </div>
+  <div #module>
+    <ng-template appGuest></ng-template>
+  </div>
+  <div #target></div>
+</div>

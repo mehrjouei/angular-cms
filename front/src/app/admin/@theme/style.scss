@@ -1,0 +1,73 @@
+@import './variables';
+@import './base.scss';
+@import './form.scss';
+@import "./datatable-dark";
+
+#adminPanel-body {
+  background-color: $backgroud-color;
+  margin: 0px;
+  padding: 0px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  .content {
+    position: fixed;
+    top: 80px;
+    right: 260px;
+    left: 10px;
+    height: calc(100vh -80px);
+  }
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    text-decoration: none;
+    &:hover {
+      -moz-box-shadow:    inset 0 0 10px rgba(255, 255, 255, 0.3);
+      -webkit-box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+      box-shadow:         inset 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+  }
+  .btn-small{
+    font-size: 12px;
+    padding:4px 8px;
+  }
+  .btn-primary {
+    color: #42c1ca;
+    background-color: rgba(66, 193, 202, 0.2);
+    border-color: rgba(66, 193, 202, 0.3);
+  }
+  .btn-default {
+    color: #ced0d2;
+    background-color: rgba(206,208,210,.2);
+    border-color: rgba(206,208,210,.3);
+  }
+  .btn-danger {
+    color: #e5343d;
+    background-color: rgba(229,52,61,.2);
+    border-color: rgba(229,52,61,.3);
+  }
+  .btn-info {
+    color: #53d4fa;
+    background-color: rgba(83,212,250,.2);
+    border-color: rgba(83,212,250,.3);
+  }
+}

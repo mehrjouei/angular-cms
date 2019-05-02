@@ -1,0 +1,20 @@
+$nav-height:70px;
+.nav{
+    background-color: #2c3136;
+    height:$nav-height;
+    .logo{
+        width:250px;
+        height:$nav-height;
+        background-color: #3e454c;
+        line-height: $nav-height;
+        img{
+            vertical-align: middle;
+            width:40px;
+            margin-left: 10px;
+            margin-right: 15px;
+        }
+        .title{
+            color:white;
+        }
+    }
+}

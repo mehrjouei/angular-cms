@@ -1,0 +1,43 @@
+<nav class="admin-menu">
+  <div id="logo">
+    <img src="/assets/images/dark-logo-mini.png" alt="">
+  </div>
+  <ul class="list">
+    <li>
+      <a routerLink="/admin/pages/list">
+          <i class="fa fa-file"></i>
+          <span class="title">Pages</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="showContent('modules')" [ngClass]="activeMenu=='modules'?'active':''">
+          <i class="fa fa-cube"></i>
+          <span class="title">Modules</span>
+      </a>
+    </li>
+    <li routerLink="/admin/dashboard">
+      <a >
+          <i class="fa fa-cog"></i>
+          <span class="title">Setting</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="list end">
+    <li>
+      <a>
+          <i class="fa fa-edit"></i>
+          <span class="title">Edit</span>
+      </a>
+    </li>
+    <li>
+      <a>
+          <i class="fa fa-door-open"></i>
+          <span class="title">Logout</span>
+      </a>
+    </li>
+  </ul>
+  <div class="content" [ngClass]="showContentFlag?'active':''">
+    <app-pages *ngIf="this.activeMenu == 'pages'"></app-pages>
+    <app-modules *ngIf="this.activeMenu == 'modules'"></app-modules>
+  </div>
+</nav>
