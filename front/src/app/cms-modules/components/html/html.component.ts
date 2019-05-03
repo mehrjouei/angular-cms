@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-html',
@@ -8,8 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HtmlComponent implements OnInit {
   @Input() data: any;
 
-  constructor() { }
-
+  constructor(private sanitizer: DomSanitizer) {
+  }
+  ngOnChanges() {
+    console.log(this.data);
+  }
   ngOnInit() {
   }
 

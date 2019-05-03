@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: "./modules/page/page.module#PageModule",
       },
       {
+        path: "auth",
+        loadChildren: "./modules/auth/auth.module#AuthModule",
+      },
+      {
         path: "",
         loadChildren:
           "./modules/custom-pages/custom-pages.module#CustomPagesModule",

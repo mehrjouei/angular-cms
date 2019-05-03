@@ -8,25 +8,35 @@ import { registerLocaleData } from '@angular/common';
 import localeFa from '@angular/common/locales/fa';
 
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ToolboxModule } from './toolbox/toolbox.module';
+import { CmsModulesModule } from './cms-modules/cms-modules.module';
+import { GuestModule } from './sharedModules/guest/guest.module';
+import { BaseComponent } from './components/base/base.component';
+import { ContainerComponent } from './components/container/container.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent,BaseComponent,ContainerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolboxModule,
+    CmsModulesModule,
+    GuestModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthService,
   ],
+  entryComponents:[ContainerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

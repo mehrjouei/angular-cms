@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactory, ComponentRef, ElementRef } from '@angular/core';
-import { GuestDirective } from '../../../sharedModules/guest/directives/guest-outlet.directive';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DialogService } from '../../../sharedModules/dialog/dialog.service';
-import { EditDialogComponent } from '../../../toolbox/components/edit-dialog/edit-dialog.component';
-import { PageService } from '../../../services/page.service';
-import { BusService } from '../../../services/bus.service';
+import { GuestDirective } from 'src/app/sharedModules/guest/directives/guest-outlet.directive';
+import { EditDialogComponent } from 'src/app/toolbox/components/edit-dialog/edit-dialog.component';
+import { DialogService } from 'src/app/sharedModules/dialog/dialog.service';
+import { PageService } from 'src/app/services/page.service';
+import { BusService } from 'src/app/services/bus.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-container',
@@ -25,8 +26,18 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
   @Input() guestComponentFactory: ComponentFactory<any>;
 
   private guestComponentRef: ComponentRef<any>;
-
-  constructor(private sanitizer: DomSanitizer, private dialog: DialogService, private pageService: PageService, private bus: BusService) { }
+  showEditBtns:boolean=false;
+  constructor(
+    private sanitizer: DomSanitizer,
+     private dialog: DialogService,
+      private pageService: PageService,
+       private bus: BusService,
+       private storage:StorageService
+       ) { 
+         this.storage.getStorage("editMode").behaviorSubject.subscribe(x=>{
+          this.showEditBtns=x;
+         });
+       }
    // TODO
 
   ngOnInit() {
@@ -35,11 +46,6 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
     this.target.nativeElement.insertAdjacentHTML('beforeend', this.html);
     this.target.nativeElement.querySelector('[data-content]').appendChild(this.module.nativeElement);
     this.target.nativeElement.querySelector('[data-title]').insertAdjacentHTML('beforeend', this.title);
-  }
-
-
-  ignoreHtml(html) {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   onEdit(e) {

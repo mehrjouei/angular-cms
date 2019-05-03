@@ -2,14 +2,14 @@ import {
   Component, OnInit, ComponentFactoryResolver, ApplicationRef,
   EmbeddedViewRef, Injector, ViewChild, ElementRef, OnDestroy
 } from '@angular/core';
-import { MasterInjector } from '../../services/master-injector.service';
-import { HtmlComponent } from '../../../cms-modules/components/html/html.component';
-import { SliderComponent } from '../../../cms-modules/components/slider/slider.component'; // TODO, define index
-import { forkJoin, Subscription } from 'rxjs';
-import { Page } from '../../../models/page';
-import { BusService } from '../../../services/bus.service';
-import { PageService } from '../../../services/page.service';
+import { Subscription } from 'rxjs';
 import { ContainerComponent } from '../container/container.component';
+import { Page } from 'src/app/models/Page';
+import { BusService } from 'src/app/services/bus.service';
+import { MasterInjector } from 'src/app/master/services/master-injector.service';
+import { PageService } from 'src/app/services/page.service';
+import { HtmlComponent } from 'src/app/cms-modules/components/html/html.component';
+import { SliderComponent } from 'src/app/cms-modules/components/slider/slider.component';
 
 @Component({
   template: ''
@@ -63,7 +63,7 @@ export class BaseComponent implements OnInit, OnDestroy {
         const factory = this.cfResolver.resolveComponentFactory(type);
         const containerFactory = this.cfResolver.resolveComponentFactory(ContainerComponent);
         const containerComponentRef = containerFactory.create(this.injector);
-        containerComponentRef.instance.title = part.container.title;
+        containerComponentRef.instance.title = part.title;
         containerComponentRef.instance.partId = part._id;
         containerComponentRef.instance.pageSlug = this.slug;
         containerComponentRef.instance.moduleType = module;

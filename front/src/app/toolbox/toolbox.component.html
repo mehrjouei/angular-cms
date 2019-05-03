@@ -24,13 +24,13 @@
   </ul>
   <ul class="list end">
     <li>
-      <a>
+      <a [ngClass]="editMode?'active':''" (click)="toggleEditMode()">
           <i class="fa fa-edit"></i>
           <span class="title">Edit</span>
       </a>
     </li>
     <li>
-      <a>
+      <a (click)="logout()">
           <i class="fa fa-door-open"></i>
           <span class="title">Logout</span>
       </a>

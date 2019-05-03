@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { BaseComponent } from '../../../components/base/base.component';
+import { BaseComponent } from 'src/app/components/base/base.component';
 
 @Component({
   selector: 'app-home',

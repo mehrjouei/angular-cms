@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 // import { AdminToolboxService } from './services/admin-toolbox.service';
 
 @Component({
@@ -9,15 +11,28 @@ import { Component, OnInit } from '@angular/core';
 export class ToolboxComponent implements OnInit {
   showContentFlag = false;
   activeMenu = '';
-
+  editMode:boolean=false;
   constructor(
-    // private adminService: AdminToolboxService
-    ) {}
+    private authService: AuthService,
+    private storage:StorageService
+  ) {
+    this.editMode=this.storage.getStorage("editMode").behaviorSubject.value
+   }
 
   ngOnInit() {
-    // this.adminService.getToken('v.vulkan', '123456').then(response => {
-    //   localStorage.setItem('API_TOKEN', response.token);
-    // });
+
+  }
+  logout() {
+    this.storage.removeStorage("editMode");
+    this.authService.logout();
+  }
+  toggleEditMode(){
+    this.editMode=!this.editMode;
+      this.storage.setStorage({
+        name:"editMode",
+        saveInLocalStorage:true,
+        value:this.editMode
+      })
   }
   showContent(contentName) {
     if (this.activeMenu == '') {

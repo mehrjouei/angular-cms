@@ -37,13 +37,13 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (localStorage.getItem('API_TOKEN')) {
+    if (this.authService.getToken()) {
       return true;
     }
 
     this.authService.redirectUrl = url;
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
     return false;
   }
 }

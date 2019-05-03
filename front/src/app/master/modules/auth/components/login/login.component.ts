@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { AuthService } from '../../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form = this.fb.group({
-    email: ['', [Validators.required, Validators.pattern('^[^\s@]+@[^\s@]+\.[^\s@]+$')]],
+    username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
@@ -21,11 +21,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     const dto = {
-      title: form.value.user,
-      slug: form.value.password
+      username: form.value.username,
+      password: form.value.password
     };
-    this.authService.getToken(dto).subscribe((response: any) => {
-      localStorage.setItem('API_TOKEN', response.token);
+    this.authService.login(dto).subscribe((response: any) => {
       this.router.navigateByUrl(this.authService.redirectUrl);
     });
   }

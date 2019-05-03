@@ -1,1 +1,1 @@
-<div [innerHTML]="data.content"></div>
+<div [innerHTML]="sanitizer.bypassSecurityTrustHtml(data.content)"></div>

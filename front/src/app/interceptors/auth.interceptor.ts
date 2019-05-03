@@ -6,16 +6,20 @@ import { throwError } from 'rxjs';
 // import { LoadingService } from '../services/loading.service';
 // import { ModalService } from '../services/modal.service';
 import { environment } from 'src/environments/environment.prod';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   // private errorWhiteList:{url:string,disc:string}[]=[{url:environment.IDENTITY_Url+'/connect/userinfo',disc:'برای صفحه اول'}];
   constructor(
+    private authService:AuthService,
+    private router:Router
     // private loading: LoadingService,
     // private modalService: ModalService
   ) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string = localStorage.getItem('API_TOKEN');
+    const token: string =this.authService.getToken();
     if (token) {
       request = request.clone({
         setHeaders: {
@@ -36,9 +40,10 @@ export class AuthInterceptor implements HttpInterceptor {
         // }
         // else
         if (error.status == 401) {
+          this.authService.logout();
+          this.router.navigate(['/auth/login']);
           // this.loading.complete();
           // this.modalService.showMessage("لطفا ایتدا لاگین کنید")
-          // this.router.navigate(['/login']);
         }
         else if (error.status == 403) {
           // this.loading.complete();
