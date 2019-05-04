@@ -8,12 +8,14 @@ import { AdminRoutingModule } from "./admin-routing.module";
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { DialogModule } from '../sharedModules/dialog/dialog.module';
+import { RoleService } from './services/role.service';
+import { TemplateService } from './services/template.service';
 
 @NgModule({
   declarations: [AdminComponent, HeaderComponent, MenuComponent],
   imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule, DialogModule],
   exports: [],
-  providers: [], // TODO tree kooftabale!
+  providers: [RoleService, TemplateService], // TODO tree kooftabale!
   entryComponents: []
 })
 export class AdminModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { ContainersService } from '../../../../../services/container.service';
+import { ContainerService } from '../../services/container.service';
 import { Container } from '../../../../../models/container';
 import { TableColumn } from '@swimlane/ngx-datatable';
 
@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   containers: Container[] = [];
   columns: TableColumn[];
 
-  constructor(private containersService: ContainersService) {
+  constructor(private containerService: ContainerService) {
   }
 
   ngOnInit() {
@@ -26,14 +26,14 @@ export class ListComponent implements OnInit {
       { prop: '', name: 'ویرایش', cellTemplate: this.editTemplate },
 
     ];
-    this.containersService.list().subscribe((res: any) => {
+    this.containerService.list().subscribe((res: any) => {
       this.containers = res.data;
     });
   }
 
   onDelete(row, index) {
     if (confirm('Are you sure to delete ' + row.name + '?')) {
-      this.containersService.delete(row._id).subscribe(_ => {
+      this.containerService.delete(row._id).subscribe(_ => {
         this.containers.splice(index, 1);
         this.containers = [...this.containers];
         alert('deleted!');

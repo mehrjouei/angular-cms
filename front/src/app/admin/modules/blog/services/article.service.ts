@@ -1,12 +1,10 @@
 import { Injectable, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Article } from '../models/article';
+import { Article } from '../../../../models/article';
 import { environment } from 'src/environments/environment';
-import { Comment } from '../models/comment';
+import { Comment } from '../../../../models/comment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ArticleService {
   private static readonly URL = `${environment.baseUrl}/articles/`;
 

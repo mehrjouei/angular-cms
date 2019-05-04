@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { PageService } from '../../../../../services/page.service';
-import { RoleService } from '../../../../../services/role.service';
-import { TemplateService } from '../../../../../services/template.service';
+import { RoleService } from '../../../../services/role.service';
+import { TemplateService } from '../../../../services/template.service';
 import { Role } from '../../../../../models/role';
 import { Template } from '../../../../../models/template';
 import { forkJoin } from 'rxjs';

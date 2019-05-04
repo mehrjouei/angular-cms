@@ -1,11 +1,9 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Category } from '../models/category';
+import { Category } from '../../../../models/category';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CategoryService {
   private static readonly URL = `${environment.baseUrl}/categories/`;
 

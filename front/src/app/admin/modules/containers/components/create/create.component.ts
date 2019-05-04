@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ContainersService } from '../../../../../services/container.service';
+import { ContainerService } from '../../services/container.service';
 import { Container } from '../../../../../models/container';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private containersService: ContainersService,
+    private containerService: ContainerService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
       html: form.value.html,
       image: form.value.image
     };
-    this.containersService.create(container).subscribe(res => {
+    this.containerService.create(container).subscribe(res => {
       alert(`created!`);
       this.router.navigate(['../list'], { relativeTo: this.route });
     });

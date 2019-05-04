@@ -3,8 +3,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Article } from '../../../../../models/article';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
-import { ArticleService } from '../../../../../services/article.service';
-import { CategoryService } from '../../../../../services/category.service';
+import { ArticleService } from '../../services/article.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'admin-article-create',

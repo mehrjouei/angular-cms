@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { TemplateService } from '../../../../../services/template.service';
+import { TemplateService } from '../../../../services/template.service';
 import { Template } from '../../../../../models/template';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 

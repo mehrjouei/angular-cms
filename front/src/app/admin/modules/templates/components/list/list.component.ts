@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { TemplateService } from '../../../../../services/template.service';
+import { TemplateService } from '../../../../services/template.service';
 import { Template } from '../../../../../models/template';
 import { TableColumn } from '@swimlane/ngx-datatable';
 

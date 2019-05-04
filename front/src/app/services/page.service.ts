@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Part } from '../models/part';
 
 @Injectable({
-  providedIn: 'root' // TODO provided here for now
+  providedIn: 'root' // TODO provided here for now, yekam kar dare
 })
 export class PageService {
   private static readonly URL = `${environment.baseUrl}/pages/`;

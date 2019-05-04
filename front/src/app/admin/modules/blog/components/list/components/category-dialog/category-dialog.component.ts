@@ -3,8 +3,8 @@ import { DialogRef } from '../../../../../../../sharedModules/dialog/dialog-ref'
 import { DialogConfig } from '../../../../../../../sharedModules/dialog/dialog-config';
 import { DialogBaseComponent } from '../../../../../../../sharedModules/dialog/components/dialog-base/dialog-base.component';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { CategoryService } from 'src/app/services/category.service';
 import { Category } from '../../../../../../../models/category';
+import { CategoryService } from '../../../../services/category.service';
 
 @Component({
   selector: 'blog-list-category-dialog',
