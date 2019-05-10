@@ -13,6 +13,7 @@ const routes: Routes = [
     path: '',
     loadChildren: './master/master.module#MasterModule'
   },
+
   { path: '', redirectTo: '/master', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -20,6 +20,9 @@ export class StorageService {
   }
   private loadFromLocalStorage(){
     let s=JSON.parse(localStorage.getItem("store"));
+    if (!s) {
+      return;
+    }
     for(let i of s){
       this.stores.push({
         name:i.name,

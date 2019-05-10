@@ -10,6 +10,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
 import { DialogModule } from '../sharedModules/dialog/dialog.module';
 import { GuestModule } from '../sharedModules/guest/guest.module';
 import { CmsModulesModule } from '../cms-modules/cms-modules.module';
+import { DialogService } from '../sharedModules/dialog/dialog.service';
 
 
 @NgModule({
@@ -22,8 +23,10 @@ import { CmsModulesModule } from '../cms-modules/cms-modules.module';
     GuestModule,
     CmsModulesModule
   ],
-  exports: [ToolboxComponent],
-  entryComponents: [ToolboxComponent, EditDialogComponent], // TODO why toolbox component
-  providers: [ToolboxService]
+  // exports: [ToolboxComponent],
+  entryComponents: [EditDialogComponent,ToolboxComponent], // TODO why toolbox component
+  providers: [ToolboxService,DialogService]
 })
-export class ToolboxModule { }
+export class ToolboxModule {
+  static entry = ToolboxComponent;
+ }

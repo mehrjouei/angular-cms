@@ -8,8 +8,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HtmlComponent implements OnInit {
   @Input() data: any;
-
-  constructor(private sanitizer: DomSanitizer) {
+  sanitizer;
+  constructor(private sanit: DomSanitizer) {
+    this.sanitizer=this.sanit;
   }
   ngOnChanges() {
     console.log(this.data);
