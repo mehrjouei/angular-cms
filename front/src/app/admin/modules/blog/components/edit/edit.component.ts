@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Article } from '../../../../../models/article';
-import { ArticleService } from '../../../../../services/article.service';
+import { ArticleService } from '../../services/article.service';
 import { forkJoin } from 'rxjs';
 import { Category } from '../../../../../models/category';
-import { CategoryService } from '../../../../../services/category.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'admin-article-edit',

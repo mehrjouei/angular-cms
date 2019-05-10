@@ -6,10 +6,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 
-export class StorageService {
+export class StorageService { // TODO combine with bus  service
   stores: StorageModel[] = [];
 
-  constructor() { 
+  constructor() {
     this.loadFromLocalStorage();
   }
   private saveToLocalStorage(){
@@ -20,7 +20,7 @@ export class StorageService {
   }
   private loadFromLocalStorage(){
     let s=JSON.parse(localStorage.getItem("store"));
-    if (!s) {
+    if (s==null) {
       return;
     }
     for(let i of s){

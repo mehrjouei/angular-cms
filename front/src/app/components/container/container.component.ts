@@ -33,7 +33,7 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
       private pageService: PageService,
        private bus: BusService,
        private storage:StorageService
-       ) { 
+       ) {
          this.storage.getStorage("editMode").behaviorSubject.subscribe(x=>{
           this.showEditBtns=x;
          });

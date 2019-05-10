@@ -4,8 +4,8 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 import { Category } from '../../../../../models/category';
 import { DialogService } from '../../../../../sharedModules/dialog/dialog.service';
 import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';;
-import { CategoryService } from '../../../../../services/category.service';
-import { ArticleService } from '../../../../../services/article.service';
+import { CategoryService } from '../../services/category.service';
+import { ArticleService } from '../../services/article.service';
 
 
 @Component({

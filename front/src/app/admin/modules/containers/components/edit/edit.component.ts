@@ -1,7 +1,7 @@
 import { Container } from './../../../../../models/container';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ContainersService } from '../../../../../services/container.service';
+import { ContainerService } from '../../services/container.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
@@ -20,14 +20,14 @@ export class EditComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private containersService: ContainersService,
+    private containerService: ContainerService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const _id = paramMap.get('_id');
-      this.containersService.one(_id)
+      this.containerService.one(_id)
         .subscribe((res: any) => {
           this.container = res.data;
           this.form.setValue({
@@ -44,7 +44,7 @@ export class EditComponent implements OnInit {
       html: form.value.html,
       image: form.value.image
     };
-    this.containersService.update(this.container._id, container).subscribe(res => {
+    this.containerService.update(this.container._id, container).subscribe(res => {
       alert(`edited!`);
       this.router.navigateByUrl('/admin/containers/list');
     });
