@@ -1,0 +1,95 @@
+#toolbars{
+    background-color: #f5f6f7;
+    direction: ltr;
+    *{
+        box-sizing: border-box;
+    }
+    &>ul{
+        list-style: none;
+        padding:0px;
+        margin:0px;
+        &>li{
+            vertical-align: top;
+            display: inline-block;
+            border-right: 1px solid #e2e3e4;
+            text-align: center;
+            li{
+                border:1px solid transparent;
+                vertical-align: top;
+            }
+            li:hover{
+                border:1px solid rgba(2,126,253,.33);
+                background-color: rgba(9,119,247,.05);
+            }
+            .icon{
+                display: inline-block;
+                background-position: center center;
+                background-repeat: no-repeat;
+                vertical-align: top;
+            }
+            ul{
+                display: inline-block;
+            }
+            ul.vertical{
+                list-style: none;
+                padding:0px;
+                margin:0px;
+                padding:4px;
+                padding-bottom: 0px;
+                li{
+                    display: inline-block;
+                    padding:4px;
+                    cursor: pointer;
+                    .icon{
+                        background-image: url(/assets/images/filemanager/filemanagericons.png);
+                        text-align: center;
+                        width: 35px;
+                        height:35px;
+                    }
+                    .title{
+                        color: #3c3c3c;
+                        font-size: 11px;
+                        text-align: center;
+                        margin-top:2px;
+                    }
+                }
+            }
+            ul.horizontal{
+                list-style: none;
+                padding:0px;
+                margin:0px;
+                margin-top:4px;
+                padding: 0px 3px;
+                .icon{
+                    background-image: url(/assets/images/filemanager/explorerviewicons.png);
+                }
+                li{
+                    display:block;
+                    padding:2px;
+                    line-height: 15px;
+                    text-align: left;
+                    cursor: pointer;
+                    .icon{
+                        text-align: left;
+                        display: inline-block;
+                        width: 16px;
+                        height:16px;
+                    }
+                    .title{
+                        display: inline-block;
+                        color: #3c3c3c;
+                        font-size: 11px;
+                        text-align: left;
+                        vertical-align: top;
+                        margin-left: 3px;
+                    }
+                }
+            }
+            .groupTitle{
+                text-align: center;
+                color: #929292;
+                font-size: 11px;
+            }
+        }
+    }
+}

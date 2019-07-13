@@ -1,5 +1,5 @@
 import { Injectable, ChangeDetectionStrategy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Article } from '../../../../models/article';
 import { environment } from 'src/environments/environment';
 import { Comment } from '../../../../models/comment';
@@ -10,8 +10,15 @@ export class ArticleService {
 
   constructor(private httpService: HttpClient) { }
 
-  list() {
-    return this.httpService.get(`${ArticleService.URL}list`);
+  // list() {
+  //   return this.httpService.get(`${ArticleService.URL}list`);
+  // }
+
+  listByCategory(category = '', offset = 0, limit = 50) { // TODO paginget client side e
+    // return this.httpService.get(`${ArticleService.URL}list-by-category`, { params });
+    return this.httpService.get(`${ArticleService.URL}list-by-category/`, {
+      params: new HttpParams().set('category', category).set('offset', `${offset}`).set('limit', `${limit}`)
+    });
   }
 
   create(article: Article) {

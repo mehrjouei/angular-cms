@@ -1,0 +1,101 @@
+.calendar-wrapper {
+  padding: 10px;
+
+  .prev {
+    float: right;
+  }
+
+  .next {
+    float: left;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .navigator {
+    height: 30px;
+    text-align: center;
+
+    .year {
+      color: rgb(40, 141, 129);
+    }
+
+    .month {
+      color: rgb(97, 109, 65);
+    }
+  }
+
+  i {
+    font-size: 26px;
+    color: rgba(114, 156, 179, 0.6);
+
+    &:hover {
+      color: rgba(114, 156, 179, 0.95);
+    }
+  }
+
+  .calendar {
+    text-align: center;
+
+    .days {
+      font-size: 10px;
+      color: #ea2d2d;
+    }
+
+    table {
+      margin: 0 auto;
+      white-space: nowrap;
+
+      th {
+        width: 30px;
+        height: 30px;
+      }
+
+      td {
+        width: 30px;
+        height: 30px;
+
+        &.current {
+          &:hover {
+            background-color: #f8f8f8;
+            cursor: pointer;
+          }
+
+          &.today {
+            background-color: rgb(231, 202, 157);
+          }
+
+          &.selected {
+            background-color: rgb(145, 123, 223);
+          }
+        }
+
+        &.not-current {
+          color: lightslategray;
+
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+
+  .goToToday {
+    text-align: center;
+
+    button {
+      background-color: rgba(114, 156, 179, 0.95);
+      border: none;
+      color: white;
+      padding: 5px 22px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 2px;
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+  }
+}

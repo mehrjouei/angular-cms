@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <form class="form">
+    <div class="items" *ngIf="!isEditMode; else editBox">
+      <a class="add-item" (click)="onItemAdd($event)">
+        <i class="fa fa-plus"></i>
+      </a>
+      <br>
+      <label for="orientation">نوع تب</label>
+      <select (change)="onModeChange($event.target.value)" [value]="this.data.data.mode">
+        <option *ngFor="let orientation of orientations | Enum" [value]="orientation.key">{{orientation.value}}</option>
+      </select>
+      <br>
+      <label for="theme">قالب تب</label>
+      <select (change)="onThemeChange($event.target.value)" [value]="this.data.data.theme">
+        <option *ngFor="let theme of themes | Enum" [value]="theme.key">{{theme.value}}</option>
+      </select>
+      <br>
+      <label>ایتم ها</label>
+      <div class="item" *ngFor="let item of sort(data.data.items)">
+        <span class="info">
+          <a (click)="onItemEdit($event, item)">
+            <span class="title">{{item.title}}</span>
+            <i class="fa fa-{{item.icon}}"></i>
+          </a>
+        </span>
+        <span class="operators">
+          <a class="operator edit" (click)="onItemEdit($event, item)">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="operator down" (click)="onItemDown($event, item)">
+            <i class="fa fa-arrow-down"></i>
+          </a>
+          <a class="operator up" (click)="onItemUp($event, item)">
+            <i class="fa fa-arrow-up"></i>
+          </a>
+          <a class="operator delete" (click)="onItemDelete($event, item)">
+            <i class="fa fa-times"></i>
+          </a>
+        </span>
+        <span style="clear: both"></span>
+      </div>
+    </div>
+    <ng-template #editBox>
+      <div class="editBox">
+        <input type="text" [value]="currentItem?.title" (keyup)="onTitleChange($event.target.value)">
+        <input type="text" [value]="currentItem?.icon" (keyup)="onIconChange($event.target.value)">
+        <ckeditor [data]="currentItem?.content" (change)="onContentChange($event.editor.getData())"></ckeditor>
+      </div>
+    </ng-template>
+  </form>
+</div>

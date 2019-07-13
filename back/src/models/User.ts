@@ -47,6 +47,14 @@ let UserSchema: Schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Website",
     // required: true
+  },
+  isActive: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  verifyId: {
+    type: String
   }
 });
 

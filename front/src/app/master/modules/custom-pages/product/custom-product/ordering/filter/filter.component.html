@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let i of availbeInuranceList;let counter=index" (click)="showModal(i)">
+    <div class="title">
+      <span class="counter">{{counter+1|number:'2.0-0'}}</span>
+      {{i.title}}
+    </div>
+    <div class="desc">
+      {{i.shortDescription}}
+    </div>
+  </li>
+</ul>

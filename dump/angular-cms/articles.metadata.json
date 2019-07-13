@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"angular-cms.articles"},{"v":2,"unique":true,"key":{"slug":1},"name":"slug_1","ns":"angular-cms.articles","background":true}],"uuid":"fd87f6d9f8cf4b7f9e16e49f6a74a69a"}

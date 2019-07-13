@@ -1,0 +1,50 @@
+<card>
+  <card-header [title]="'نقش ها'">
+  </card-header>
+  <card-body>
+    <ngx-datatable class="dark" [rows]="roles" [columns]="columns" [columnMode]="'force'" [headerHeight]="40"
+      [summaryRow]="false" [footerHeight]="40" [limit]="10" [rowHeight]="'auto'">
+    </ngx-datatable>
+    <ng-template #editTemplate let-row="row" let-i="rowIndex">
+      <a class="btn btn-small btn-primary" routerLink="/admin/roles/edit/{{row._id}}">ویرایش</a>
+      <a class="btn btn-small btn-danger" (click)="onDelete(row, i)">حذف</a>
+    </ng-template>
+    <ng-template #nameTemplate let-value="value" let-i="rowIndex">
+      <span title="Double click to edit" (dblclick)="editing[rowIndex + '-name'] = true"
+        *ngIf="!editing[rowIndex + '-name']">
+        {{value}}
+      </span>
+      <input autofocus (blur)="updateValue($event, 'name', i)" *ngIf="editing[i + '-name']" type="text"
+        [value]="value" />
+    </ng-template>
+    <ng-template #descriptionTemplate let-value="value" let-i="rowIndex">
+      <span title="Double click to edit" (dblclick)="editing[rowIndex + '-description'] = true"
+        *ngIf="!editing[rowIndex + '-description']">
+        {{value}}
+      </span>
+      <input autofocus (blur)="updateValue($event, 'description', i)" *ngIf="editing[i + '-description']" type="text"
+        [value]="value" />
+    </ng-template>
+    <ng-template #statusTemplate let-value="value" let-i="rowIndex">
+      <span title="Double click to edit" (dblclick)="editing[rowIndex + '-status'] = true"
+        *ngIf="!editing[rowIndex + '-status']">
+        {{value}}
+      </span>
+      <input autofocus (blur)="updateValue($event, 'status', i)" *ngIf="editing[i + '-status']" type="text"
+        [value]="value" />
+    </ng-template>
+    <ng-template #resourcesTemplate let-i="rowIndex" let-value="value">
+      <span title="Double click to edit" (dblclick)="editing[i + '-resources'] = true"
+        *ngIf="!editing[i + '-resources']">
+        <div *ngFor="let res of value">{{res.description || res.name}}</div>
+      </span>
+      <select *ngIf="editing[i + '-resources']" (blur)="editing[i + '-resources'] = false"
+        (change)="updateValue($event, 'resources', i)" [value]="getResourcesValue(value)">
+        <option *ngFor="let res of value" [value]="res._id">Male</option>
+      </select>
+    </ng-template>
+    <div class="btnBox">
+      <a class="btn btn-primary" [routerLink]="['../create']">ایجاد نقش</a>
+    </div>
+  </card-body>
+</card>

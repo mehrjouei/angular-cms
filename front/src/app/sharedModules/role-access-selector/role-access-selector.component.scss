@@ -1,0 +1,23 @@
+table {
+  text-align: center;
+  tr {
+    th,
+    td {
+      border-bottom: 1px solid rgb(63, 63, 63);
+      border-left: 1px solid rgb(63, 63, 63);
+      padding:5px;
+      margin:0px;
+      &:first-child {
+        border-right: 1px solid rgb(63, 63, 63);
+      }
+    }
+    &:first-child{
+      th{
+        border-top: 1px solid rgb(63, 63, 63);
+      }
+    }
+  }
+  input{
+    height: auto;
+  }
+}

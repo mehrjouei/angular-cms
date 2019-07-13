@@ -1,0 +1,101 @@
+<div id="toolbars">
+<ul>
+  <li>
+    <ul class="vertical">
+      <li (click)="onCopy(false)">
+        <span class="icon" style="background-position: 0 -464px;"></span>
+        <div class="title">Copy</div>
+      </li>
+      <li (click)="onCopy(true)">
+        <span class="icon" style="background-position: 0 -368px;"></span>
+        <div class="title">Move</div>
+      </li>
+      <li (click)="onPaste()">
+        <span class="icon" style="background-position: 0 -112px;"></span>
+        <div class="title">Paste</div>
+      </li>
+      <div class="groupTitle">
+        Clipboard
+      </div>
+    </ul>
+    </li>
+  <li>
+    <ul class="vertical">
+      <li (click)="onDelete()">
+        <span class="icon" style="background-position: 0 -431px;"></span>
+        <div class="title">Delete</div>
+      </li>
+      <li (click)="onRename()">
+        <span class="icon" style="    background-position: 0 -336px;"></span>
+        <div class="title">Rename</div>
+      </li>
+      <div class="groupTitle">
+        Organize
+      </div>
+    </ul>
+  </li>
+  <li>
+    <ul class="vertical">
+      <li (click)="onNewFolder()">
+        <span class="icon" style="background-position: 0 -400px;"></span>
+        <div class="title">New Folder</div>
+      </li>
+      <div class="groupTitle">
+        New
+      </div>
+    </ul>
+
+  </li>
+  <li>
+    <ul class="vertical">
+      <li>
+        <span class="icon" style="background-position: 0 -304px;"></span>
+        <div class="title" (click)="onDownload()">Download</div>
+      </li>
+      <li (click)="onUpload()">
+        <span class="icon" style="background-position: 0 -272px;"></span>
+        <div class="title">
+          Upload
+          <input #fileInput type="file" (change)="onFileChange($event)" hidden/>
+        </div>
+      </li>
+      <div class="groupTitle">
+      Transfer
+    </div>
+    </ul>
+
+  </li>
+  <li>
+    <ul class="horizontal">
+      <li>
+        <span class="icon" style="background-position: 0 -80px"></span>
+        <div class="title" (click)="onLargeIcons()">Large icons</div>
+      </li>
+      <li>
+        <span class="icon" style="background-position: 0 -64px;"></span>
+        <div class="title" (click)="onMediumIcons()">medium icon</div>
+      </li>
+      <li>
+        <span class="icon" style="background-position: -16px -128px;"></span>
+        <div class="title" (click)="onDetailsIcon()">details</div>
+      </li>
+      <div class="groupTitle">
+      Layout
+    </div>
+    </ul>
+
+  </li>
+    <li>
+    <ul class="vertical">
+      <li>
+        <span class="icon" style="background-position: 0 -206px;"></span>
+        <div class="title">Access</div>
+      </li>
+         <div class="groupTitle">
+      Permissions
+    </div>
+    </ul>
+
+  </li>
+</ul>
+</div>

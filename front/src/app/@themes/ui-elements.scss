@@ -1,0 +1,30 @@
+.btn {
+  border-radius: 16px;
+  border: 0;
+  font-family: inherit;
+  padding: 5px 10px;
+}
+.orangeTitleLine {
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    background-color: $second-color;
+    width: 120px;
+  }
+}
+
+.btn-primary {
+  background-color: $second-color;
+  color: white;
+  &:disabled {
+    background-color: #ccc;
+  }
+}
+select,
+input {
+  // height: 40px;
+  // border-radius: 2px;
+  // border: solid 1px #979797;
+  // background-color: #ffffff;
+}

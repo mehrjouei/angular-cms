@@ -2,12 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { PageService } from '../../../../../services/page.service';
 import { Page } from '../../../../../models/page';
-import { RoleService } from 'src/app/admin/services/role.service';
+import { RoleService } from 'src/app/services/role.service';
 import { TemplateService } from '../../../../services/template.service';
 import { forkJoin } from 'rxjs';
 import { Role } from 'src/app/models/role';
 import { Template } from '../../../../../models/template';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
 
 
 
@@ -41,8 +41,8 @@ export class EditComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const slug = paramMap.get('slug');
+    this.activatedRoute.queryParamMap.subscribe((param:any) => {
+      const slug = param.params['slug'];
       forkJoin([this.roleService.list(), this.templateService.list(), this.pageService.one(slug)])
         .subscribe((resolves: any[]) => {
           const roles = resolves[0].data as Role[];

@@ -1,0 +1,25 @@
+<div style="position: relative">
+  <div class="brandChoose">
+    <div class="search">
+      <div class="brandSelectBox">
+        <form action="">
+          <input type="text" #brandFilterText (keyup)="brandFilter(brandFilterText.value)" placeholder="نام برند خودرو را جستجو کنید">
+        </form>
+      </div>
+    </div>
+    <div class="brandSelectBox">
+      <div class="brandSelect">
+        <ul>
+          <li *ngFor="let brand of brandFilteredList;let counter=index" [ngClass]="counter%3==2 ? 'leftEdge':''" (click)="selectBrand(brand)">
+            <div>
+              <img [src]="'/assets/devices/BrandsLogo/'+brand.deviceKindId+'/'+brand.brandId" alt="">
+            </div>
+            <div class="title">
+              {{brand.name}}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

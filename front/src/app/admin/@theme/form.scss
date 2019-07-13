@@ -1,10 +1,6 @@
-// #adminPanel-body { // TODO bloody dialog is added to the body, not adminPanel-body
+#adminPanel-body {
   .container {
     width: 100%;
-    // padding-right: 15px;
-    // padding-left: 15px;
-    // margin-right: auto;
-    // margin-left: auto;
   }
   .row {
     display: -ms-flexbox;
@@ -56,12 +52,13 @@
       font-weight: 400;
       color: #9a9da0;
     }
-  }
-// }
 
-.btnsBox { // TODO
-  .btn {
-    margin-top: 7px;
-    margin-left: 7px;
   }
+  .btnsBox { // TODO
+    .btn {
+      margin-top: 7px;
+      margin-left: 7px;
+    }
+  }
+
 }

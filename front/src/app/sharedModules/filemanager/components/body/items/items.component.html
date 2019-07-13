@@ -1,0 +1,9 @@
+<div *ngIf="layout" class="item" [class.selected]="isSelected()" [ngClass]="layout" (click)="selectItem($event)"
+  (dblclick)="openItem()">
+  <div class="icon">
+    <img src="/assets/images/filemanager/icons/{{icon}}.png" alt="">
+  </div>
+  <div class="title">
+    {{fileOrdDirectory.name}}
+  </div>
+</div>

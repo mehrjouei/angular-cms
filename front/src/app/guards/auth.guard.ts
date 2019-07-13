@@ -13,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(
@@ -24,11 +24,11 @@ export class AuthGuard implements CanActivate, CanLoad {
     return this.checkLogin(url);
   }
 
-  // canActivateChild(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): boolean {
-  //   return this.canActivate(route, state);
-  // }
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+    return this.canActivate(route, state);
+  }
 
   canLoad(route: Route): boolean {
     const url = `/${route.path}`;
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.getToken()) {
+    if (this.authService.getToken()) { // TODO in bayad server check she kollan
       return true;
     }
 

@@ -7,15 +7,15 @@ import { AdminComponent } from "./admin.component";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { DialogModule } from '../sharedModules/dialog/dialog.module';
-import { RoleService } from './services/role.service';
 import { TemplateService } from './services/template.service';
+import { CategoryService } from './services/category.service';
+import { ResourceService } from './services/resource.service';
 
 @NgModule({
-  declarations: [AdminComponent, HeaderComponent, MenuComponent],
-  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule, DialogModule],
+  declarations: [AdminComponent, HeaderComponent, MenuComponent ],
+  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule],
   exports: [],
-  providers: [RoleService, TemplateService], // TODO tree kooftabale!
-  entryComponents: []
+  providers: [TemplateService, CategoryService, ResourceService], // TODO tree kooftabale!
+  entryComponents: [] // TODO roo rolemodule kar nemikard felan inja kar mikone
 })
 export class AdminModule { }

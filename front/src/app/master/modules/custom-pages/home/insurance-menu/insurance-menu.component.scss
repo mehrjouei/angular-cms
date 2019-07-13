@@ -1,0 +1,25 @@
+ul {
+  padding: 10px 0px;
+  margin: 0px;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  li {
+    font-size: 22px;
+    padding:0px 5px;
+    cursor: pointer;
+    color: #9db5ee;
+    align-self: baseline;
+    &.active {
+      color: #224698;
+      font-size: 55px;
+      font-weight: 900;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+    }
+  }
+}

@@ -34,7 +34,16 @@ let PageSchema: Schema = new Schema({
   author: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    // required: true
+  },
+  priority: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  authorName: {
+    type: String
+    // required: true
   },
   createDate: {
     type: Date,
@@ -71,7 +80,13 @@ let PageSchema: Schema = new Schema({
       title: {
         type: String,
         required: true
-      }
+      },
+      roles: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Role"
+        }
+      ]
     }
   ]
 });

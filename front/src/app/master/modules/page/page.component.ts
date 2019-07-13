@@ -1,6 +1,5 @@
 import { Component, OnInit,ChangeDetectionStrategy, ViewChild } from '@angular/core';
 
-import { Page } from '../../../models/Page';
 import { BaseComponent } from 'src/app/components/base/base.component';
 // import { PageService } from './page.service';
 

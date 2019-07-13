@@ -24,8 +24,24 @@ const routes: Routes = [
         loadChildren: './modules/containers/containers.module#ContainersModule'
       },
       {
+        path: 'categories',
+        loadChildren: './modules/categories/categories.module#CategoriesModule'
+      },
+      {
         path: 'blog',
         loadChildren: './modules/blog/blog.module#BlogModule'
+      },
+      {
+        path: 'fileManager',
+        loadChildren: './modules/filemanager/filemanager.module#FilemanagerModule'
+      },
+      {
+        path: 'website',
+        loadChildren: './modules/website/website.module#WebsiteModule'
+      },
+      {
+        path: 'roles',
+        loadChildren: './modules/roles/roles.module#RolesModule'
       },
       {
         path: '',
@@ -37,7 +53,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule { }

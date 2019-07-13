@@ -26,10 +26,16 @@ let WebsiteSchema: Schema = new Schema({
         type: Number,
         required: true
     },
+    admin: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
     location: {
         type: String,
         required: true
-    }
+    },
+    settings: Schema.Types.Mixed // auth ro ham hamin inja mizani, client asan hcihi nemidune
 });
 
 export default model("Website", WebsiteSchema);

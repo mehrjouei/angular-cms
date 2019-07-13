@@ -1,0 +1,31 @@
+<ul class="tabsMenu">
+  <li [ngClass]="visibleTab=='tab1'?'active':''" (click)="visibleTab='tab1'">تنظیمات عمومی</li>
+  <li [ngClass]="visibleTab=='tab2'?'active':''" (click)="visibleTab='tab2'">محتوا</li>
+  <li [ngClass]="visibleTab=='tab3'?'active':''" (click)="visibleTab='tab3'">دسترسی ها</li>
+</ul>
+<div id="tabs">
+  <div class="tab" [ngClass]="visibleTab=='tab1'?'visible':''">
+    <form [formGroup]="form" class="form">
+      <div>
+        <label for="html">عنوان:</label>
+        <input type="text" name="title" placeholder="عنوان" formControlName="title" required>
+        <label for="html">طرح قاب:</label>
+        <select name="containerId" formControlName="containerId">
+          <option *ngFor="let container of containers" [value]="container._id">{{container.name}}</option>
+        </select>
+      </div>
+    </form>
+
+  </div>
+  <div class="tab" [ngClass]="visibleTab=='tab2'?'visible':''">
+    <ng-template appGuest></ng-template>
+  </div>
+  <div class="tab" [ngClass]="visibleTab=='tab3'?'visible':''">
+    <p class="title">
+      دسترسی ها:
+    </p>
+    <app-role-access-selector (selectRole)="roleChangeEvent($event)" [selectedRoleIds]="selectedRoleIds" [roles]="roles"></app-role-access-selector>
+  </div>
+  <button class="btn btn-primary" (click)="onSubmit(form)">ویرایش</button>
+  <button class="btn btn-default" (click)="onCancel()">انصراف</button>
+</div>

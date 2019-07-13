@@ -1,0 +1,85 @@
+<card>
+  <card-header [title]="'ویرایش سایت'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="name">نام:</label>
+              <input class="form-control" type="text" name="name" placeholder="نام" formControlName="name" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="url">آردس:</label>
+              <input class="form-control" type="text" name="url" placeholder="آدرس" formControlName="url" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="title">عنوان:</label>
+              <input class="form-control" type="text" name="title" placeholder="عنوان" formControlName="title" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="favicon">عکس:</label>
+              <input class="form-control" type="text" name="favicon" placeholder="عکس" formControlName="favicon"
+                required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="ip">ip:</label>
+              <input class="form-control" type="text" name="ip" placeholder="ip" formControlName="ip" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="port">port:</label>
+              <input class="form-control" type="text" name="port" placeholder="port" formControlName="port" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="location">location:</label>
+              <input class="form-control" type="text" name="location" placeholder="location" formControlName="location"
+                required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="settings">تنظیمات:</label>
+              <input class="form-control" type="text" name="settings" placeholder="تنظیمات" formControlName="settings"
+                style="direction: ltr" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          تأیید
+        </button>
+        <a href="javascript:void(0)" (click)="manageMappings()" class="btn btn-primary">مدیریت mappings</a>
+        <!-- <button routerLink="/admin/templates/list" class="btn btn-default" type="submit">
+          انصراف
+        </button> -->
+      </div>
+    </form>
+  </card-body>
+</card>

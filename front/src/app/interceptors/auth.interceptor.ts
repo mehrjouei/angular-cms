@@ -5,7 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 // import { LoadingService } from '../services/loading.service';
 // import { ModalService } from '../services/modal.service';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -13,17 +13,17 @@ import { Router } from '@angular/router';
 export class AuthInterceptor implements HttpInterceptor {
   // private errorWhiteList:{url:string,disc:string}[]=[{url:environment.IDENTITY_Url+'/connect/userinfo',disc:'برای صفحه اول'}];
   constructor(
-    private authService:AuthService,
-    private router:Router
+    private authService: AuthService,
+    private router: Router
     // private loading: LoadingService,
     // private modalService: ModalService
   ) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token: string =this.authService.getToken();
+    const token: string = this.authService.getToken();
     if (token) {
       request = request.clone({
         setHeaders: {
-          'x-access-token': `${token}`
+          Authorization: `${token}`
         }
       });
     }

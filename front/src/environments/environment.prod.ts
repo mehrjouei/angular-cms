@@ -1,5 +1,20 @@
 export const environment = {
   production: true,
   baseUrl: 'http://localhost:3000/api',
-  website: '5cc68c5e26eb421378f0606d'
+  website: '5cc68c5e26eb421378f0606d',
+  REVIEW_Url: "http://api.asan.insurancetest.ir/api",
+  IDENTITY_Url: "http://api.identity.insurancetest.ir",
+  ORDERING_Url: "http://api.ordering.insurancetest.ir/api",
+  LOCATION_Url: "http://api.location.insurancetest.ir/api",
+  PAYMENT_Url: "http://api.payment.insurancetest.ir/api",
+  REMINDER_Url: "http://api.reminder.insurancetest.ir/api",
+  PROFILE_Url: "http://api.profile.insurancetest.ir/api",
+  MESSAGING_Url: "http://api.messaging.insurancetest.ir/api",
+  ImageResourcesAdress: "http://api.asan.insurancetest.ir/images",
+  CDN:"http://api.cdn.insurancetest.ir",
+  CLIENT_ID: "IAWapp",
+  CLIENT_SECRET: "secret",
+  GRANT_TYPE: "password",
+  SCOPE: "openid profile orders payments locations profiles reviews identities reminders messages roles",
+
 };

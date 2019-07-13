@@ -12,11 +12,16 @@
       cursor: pointer;
       z-index: 999;
       display: inline-block;
+      text-shadow: 1px 1px 2px #4e4e4e;
       &.edit {
         margin-left: 8px;
       }
 
       &.remove {
+        margin-left: 8px;
+      }
+
+      &.move {
         // margin-left:5px;
       }
     }

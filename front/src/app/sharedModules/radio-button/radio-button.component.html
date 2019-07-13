@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let i of Items" (click)="select(i)" [ngStyle]="{'width':(100/Items.length) + '%'}" [ngClass]="(i.value==selectedItemValue)?'selected':''">
+    {{i.text}}
+  </li>
+</ul>

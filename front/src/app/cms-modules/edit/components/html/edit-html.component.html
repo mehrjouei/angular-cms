@@ -1,0 +1,5 @@
+<div>
+  <label for="html">متن:</label>
+  <!-- <textarea (change)="onChange(form)" dir="ltr" name="html" formControlName="html" required></textarea> -->
+  <ckeditor [data]="data.data.content" (change)="onChange($event.editor.getData())"></ckeditor>
+</div>

@@ -1,0 +1,35 @@
+<div class="main-container" *ngIf="!message">
+  <div class="left-container">
+    <img src="/assets/images/dark-logo-mini.png" alt="">
+  </div>
+  <div class="right-container">
+    <h3>We are <span>Netap</span></h3>
+    <h5>Please sign up to create outstanding features!</h5>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div>
+        <i class="fa fa-envelope"></i>
+        <input type="text" placeholder="Username" formControlName="username">
+      </div>
+      <div>
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="Password" formControlName="password">
+      </div>
+      <div>
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="First Name" formControlName="firstName">
+      </div>
+      <div>
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="Last Name" formControlName="lastName">
+      </div>
+      <div>
+        <i class="fa fa-at"></i>
+        <input type="email" placeholder="Email" formControlName="email">
+      </div>
+      <button type="submit" [disabled]="!form.valid">Sign Up</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="message">
+  {{message}}
+</div>

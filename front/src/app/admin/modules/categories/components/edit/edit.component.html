@@ -1,0 +1,36 @@
+<!-- duplicate of create -->
+<card>
+  <card-header [title]="'ویرایش دسته'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="name">نام:</label>
+              <input class="form-control" type="text" name="name" placeholder="نام" formControlName="name" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="text">والد:</label>
+              <select class="form-control" formControlName="parent">
+                <option *ngFor="let parent of parents" [value]="parent._id">{{parent.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          تأیید
+        </button>
+        <button routerLink="/admin/categories/list" class="btn btn-default" type="submit">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </card-body>
+</card>

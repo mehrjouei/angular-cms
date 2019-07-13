@@ -1,0 +1,37 @@
+@import "src/app/@themes/variables.scss";
+
+header {
+  padding: 10px 0px;
+  a {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    img#logo {
+      height: 70px;
+      vertical-align: middle;
+    }
+  }
+  #menu {
+    list-style: none;
+    float: left;
+    padding: 0px;
+    margin: 0px;
+    line-height: 64px;
+    li {
+      display: inline-block;
+      padding: 0px 5px;
+      a {
+        color: #818181;
+        font-size: 14px;
+        padding: 3px 10px;
+      }
+    }
+  }
+  #loginBtn {
+    float: left;
+    margin-top: 15px;
+    background-color: $second-color;
+    color: white;
+    border-bottom: 3px solid darken($color: $second-color, $amount: 10);
+  }
+}

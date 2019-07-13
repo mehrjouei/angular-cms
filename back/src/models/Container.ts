@@ -13,6 +13,11 @@ let ContainerSchema: Schema = new Schema({
     type: String,
     default: "",
     required: true
+  },
+  website: {
+    type: Schema.Types.ObjectId,
+    ref: "Website",
+    required: true
   }
 });
 

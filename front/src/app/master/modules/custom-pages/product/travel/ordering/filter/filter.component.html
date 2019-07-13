@@ -1,0 +1,30 @@
+<form #form="ngForm" (ngSubmit)="next()" class="form">
+  <div class="row">
+    <div class="col">
+      <label for="">کشور مقصد</label>
+      <select name="countryId" [(ngModel)]="preOrder.countryId" ngModel id="" required>
+        <option *ngFor="let c of countries" [value]="c.value">{{c.text}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="">مدت سفر</label>
+      <select name="insurancePeriods" [(ngModel)]="preOrder.insurancePeriods" ngModel id="" required>
+        <option *ngFor="let p of periods" [value]="p.value">{{p.text}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="">نوع سفر</label>
+      <app-radio-button [Items]="travelTypes" [selectedItemValue]="preOrder.travelTypes"
+        (valueSelect)="travelTypeValuSelect($event)"></app-radio-button>
+    </div>
+    <div class="col">
+      <label for="">بازه سنی</label>
+      <select name="ageRangeId" [(ngModel)]="preOrder.ageRangeId" ngModel id="" required>
+        <option *ngFor="let a of ageRange" [value]="a.value">{{a.text}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button class="btn btn-primary" [disabled]="!form.valid">مشاهده لیست بیمه ها</button>
+  </div>
+</form>

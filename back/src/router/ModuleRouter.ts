@@ -1,7 +1,7 @@
 import { Router, Response } from "express";
 import Module from "../models/Module";
 
-export class PageRouter {
+export class ModuleRouter {
   router: Router;
 
   constructor() {
@@ -39,7 +39,7 @@ export class PageRouter {
   }
 }
 
-const postRoutes = new PageRouter();
-postRoutes.routes();
+const moduleRoutes = new ModuleRouter();
+moduleRoutes.routes();
 
-export default postRoutes.router;
+export default moduleRoutes.router;

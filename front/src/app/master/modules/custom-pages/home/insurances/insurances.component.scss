@@ -1,0 +1,140 @@
+.insurances {
+  ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      box-sizing: border-box;
+      vertical-align: top;
+      width: 100%;
+      margin-bottom: 10px;
+
+      a {
+        width: 100%;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        cursor: pointer;
+        // box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+
+        img {
+          border-radius: 3px;
+          width: 100%;
+          height: auto;
+          vertical-align: top;
+        }
+
+        &.disabled {
+          pointer-events: none;
+          cursor: default;
+          color: #8c8c8c;
+          text-align: center;
+
+          &::before {
+            content: "به زودی";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.82);
+            padding-top: 40%;
+            box-sizing: border-box;
+            border-radius: 2px;
+            font-size: 40px;
+          }
+        }
+      }
+
+      &.thirdperson {
+        width: 66.24%;
+        margin-left: 1%;
+      }
+
+      &.fire {
+        width: 31.75%;
+        margin-right: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 38%;
+            }
+          }
+        }
+      }
+
+      &.pezeshki {
+        width: 40.37%;
+        margin-left: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 10%;
+            }
+          }
+        }
+      }
+
+      &.travel {
+        width: 57.62%;
+        margin-right: 1%;
+      }
+
+      &.omr {
+        width: 74.86%;
+        margin-left: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 17%;
+            }
+          }
+        }
+      }
+
+      &.mobile {
+        width: 23.13%;
+        margin-right: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 55%;
+            }
+          }
+        }
+      }
+
+      &.elevator {
+        width: 23.13%;
+        margin-left: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 19%;
+            }
+          }
+        }
+      }
+
+      &.personal {
+        width: 74.86%;
+        margin-right: 1%;
+
+        a {
+          &.disabled {
+            &::before {
+              padding-top: 6%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

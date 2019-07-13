@@ -6,27 +6,21 @@ import { PagesComponent } from './components/pages/pages.component';
 import { ModulesComponent } from './components/modules/modules.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
-import { DialogModule } from '../sharedModules/dialog/dialog.module';
 import { GuestModule } from '../sharedModules/guest/guest.module';
 import { CmsModulesModule } from '../cms-modules/cms-modules.module';
-import { DialogService } from '../sharedModules/dialog/dialog.service';
 
 
 @NgModule({
-  declarations: [ToolboxComponent, PagesComponent, ModulesComponent, EditDialogComponent],
+  declarations: [ToolboxComponent, PagesComponent, ModulesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    DialogModule,
     GuestModule,
     CmsModulesModule
   ],
-  // exports: [ToolboxComponent],
-  entryComponents: [EditDialogComponent,ToolboxComponent], // TODO why toolbox component
-  providers: [ToolboxService,DialogService]
+  exports: [ToolboxComponent],
+  entryComponents: [ToolboxComponent], // TODO why toolbox component
+  providers: [ToolboxService]
 })
-export class ToolboxModule {
-  static entry = ToolboxComponent;
- }
+export class ToolboxModule { }

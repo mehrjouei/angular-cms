@@ -7,12 +7,11 @@ import * as logger from 'morgan';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
 import * as config from './config';
-import * as jwt from 'jsonwebtoken';
 
 // import our routers/controllers
 import ArticleRouter from './router/ArticleRouter';
 import UserRouter from './router/UserRouter';
-import AuthRouter from './router/auth';
+import AuthRouter from './router/AuthRouter';
 import ResourcesRouter from './router/ResourcesRouter';
 import RolesRouter from './router/RolesRouter';
 import TemplateRouter from './router/TemplateRouter';
@@ -23,6 +22,11 @@ import CategoryRouter from './router/CategoryRouter';
 import BlogRouter from './router/BlogRouter';
 import ModuleRouter from './router/ModuleRouter';
 import ContainerRouter from './router/ContainerRouter';
+import WebsiteRouter from './router/WebsiteRouter';
+import Website from './models/Website';
+import FileRouter from './router/FileRouter';
+
+var path = require('path');
 
 class Server {
   // set app to be of type express.Application
@@ -41,13 +45,15 @@ class Server {
     mongoose.connect(config.variables.database);
     this.app.set('superSecret', config.variables.secret);
     // express middleware
-    this.app.use(bodyParser.urlencoded({ extended: true }));
-    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
+    this.app.use(bodyParser.json({limit: '5mb'}));
     this.app.use(cookieParser());
     this.app.use(logger('dev'));
     this.app.use(compression());
     this.app.use(helmet());
     this.app.use(cors());
+    var dir = path.join(__dirname, 'public');
+    this.app.use(express.static(dir));
 
     // cors
     this.app.use((req, res, next) => {
@@ -63,34 +69,19 @@ class Server {
   public routes(): void {
     const router: express.Router = express.Router();
     router.use((req: any, res: any, next: NextFunction) => {
-
-      // check header or url parameters or post parameters for token
-      var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-      // decode token
-      if (token) {
-        // verifies secret and checks exp
-        jwt.verify(token, this.app.get('superSecret'), (err: any, decoded: any) => {
-          if (err) {
-            req.user = {
-              username: "anonymous"
-            };
-            // next();
-            AuthRouter.loginRequired(req, res, next);
-          } else {
-            req.user = decoded;
-            AuthRouter.loginRequired(req, res, next);
-            // next();
-          }
+      var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['authorization'];
+      Website.findOne({ name: req.headers['website'] })
+        .then((webSite: any) => {
+          AuthRouter.getUserFromToken(token, webSite, this.app, res) // TODO this subjects seem like bloody gotos!
+            .subscribe((user: any) => {
+              req.user = user;
+              req.website = webSite;
+              AuthRouter.checkRoles(req, res, next, user.validToken);
+            })
+        })
+        .catch((e: any) => {
+          res.status(409).send("NO_WEBSITE");
         });
-      }
-      else {
-        req.user = {
-          username: "anonymous"
-        };
-        AuthRouter.loginRequired(req, res, next);
-        // req.next();
-      }
     });
     this.app.use('/', router);
     this.app.use('/api/articles', ArticleRouter);
@@ -104,8 +95,16 @@ class Server {
     this.app.use('/api/blog', BlogRouter);
     this.app.use('/api/modules', ModuleRouter);
     this.app.use('/api/containers', ContainerRouter);
+    this.app.use('/api/website', WebsiteRouter);
+    this.app.use('/api/file', FileRouter);
+    this.app.use(function (req, res) {
+      res.status(404);
+      // .render('404.html');
+    });
 
   }
+
+
 }
 
 // export

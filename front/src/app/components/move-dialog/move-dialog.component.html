@@ -1,0 +1,11 @@
+<div class="holder" *ngIf="data">
+  <form class="form">
+    <label for="">محل جدید:</label>
+    <select #pane>
+      <option *ngFor="let pane of data.panes" [value]="pane.dataset.pane">{{pane.dataset.pane}}</option>
+    </select>
+    <button class="btn btn-primary" type="submit" (click)="onSubmit(pane.value)" [disabled]="!pane">انتقال
+      ماژول</button>
+      <button class="btn btn-success" type="submit" (click)="cancel()">انصراف</button>
+    </form>
+</div>

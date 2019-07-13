@@ -1,0 +1,16 @@
+<table cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <th>عنوان دسترسی</th>
+      <th>دسترسی مشاهده</th>
+      <th>دسترسی ویرایش</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="allRoles">
+    <tr *ngFor="let i of roles;let counter=index">
+      <td>{{i.name}}</td>
+      <td><input type="checkbox" [disabled]="i.name=='administrator'" (change)="changeAccess()" [(ngModel)]="allRoles[counter].checked"></td>
+      <td><input type="checkbox" disabled></td>
+    </tr>
+  </tbody>
+</table>

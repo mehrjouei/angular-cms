@@ -11,28 +11,27 @@ import { StorageService } from '../services/storage.service';
 export class ToolboxComponent implements OnInit {
   showContentFlag = false;
   activeMenu = '';
-  editMode:boolean=false;
+  editMode = false;
   constructor(
     private authService: AuthService,
-    private storage:StorageService
+    private storage: StorageService
   ) {
-    this.editMode=this.storage.getStorage("editMode").behaviorSubject.value
-   }
+    this.editMode = this.storage.getStorage("editMode").behaviorSubject.value
+  }
 
   ngOnInit() {
 
   }
   logout() {
-    this.storage.removeStorage("editMode");
     this.authService.logout();
   }
-  toggleEditMode(){
-    this.editMode=!this.editMode;
-      this.storage.setStorage({
-        name:"editMode",
-        saveInLocalStorage:true,
-        value:this.editMode
-      })
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+    this.storage.setStorage({
+      name: "editMode",
+      saveInLocalStorage: true,
+      value: this.editMode
+    })
   }
   showContent(contentName) {
     if (this.activeMenu == '') {

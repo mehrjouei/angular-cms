@@ -5,6 +5,8 @@ import Server from './server';
 
 debug('ts-express:server');
 
+(global as any).__basedir = __dirname;
+
 const port = normalizePort(process.env.PORT || 3000);
 Server.set('port', port);
 
@@ -15,7 +17,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-function normalizePort(val: number|string): number|string|boolean {
+function normalizePort(val: number | string): number | string | boolean {
   let port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
   if (isNaN(port)) return val;
   else if (port >= 0) return port;
@@ -26,7 +28,7 @@ function onError(error: NodeJS.ErrnoException): void {
   console.log(error);
   if (error.syscall !== 'listen') throw error;
   let bind = (typeof port === 'string') ? 'Pipe ' + port : 'Port ' + port;
-  switch(error.code) {
+  switch (error.code) {
     case 'EACCES':
       console.error(`${bind} requires elevated privileges`);
       process.exit(1);

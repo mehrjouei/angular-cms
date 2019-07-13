@@ -3,6 +3,8 @@ import Article from "../models/Article";
 import Category from "../models/Category";
 import { ObjectID } from "bson";
 import { Guid } from 'guid-typescript';
+import { Promise } from "bluebird";
+import * as fs from 'fs';
 
 export class ArticleRouter {
   router: Router;
@@ -15,12 +17,42 @@ export class ArticleRouter {
   // get all of the articles in the database
   public all(req: any, res: Response): void {
     Article.find({ website: req.website }) // TODO predicate nadare
+      .populate({
+        path: 'categories',
+        model: Category
+      })
       .then(data => {
         res.status(200).json({ data });
       })
       .catch(error => {
         res.json({ error });
       });
+  }
+
+  public allByCategory(req: any, res: Response): void {
+    const category = req.query.category;
+    const offset = parseInt(req.query.offset);
+    const limit = parseInt(req.query.limit);
+    const predicate: any = {};
+    if (category) {
+      predicate.name = category;
+    }
+    Category.find(predicate).then((c: any[]) => {
+      Promise.all([Article.find({ website: req.website, categories: { '$in': c } })// TODO
+        .skip(offset).limit(limit)
+        .populate({
+          path: 'categories',
+          model: Category
+        }).exec(),
+      Article.count({ website: req.website, categories: { '$in': c } }).exec()
+      ])
+        .then((resolves: any[]) => {
+          res.status(200).json({ data: resolves[0], totalCount: resolves[1] });
+        })
+        .catch((error: any) => {
+          res.json({ error });
+        });
+    });
   }
 
   // get a single article by params of 'slug'
@@ -46,34 +78,52 @@ export class ArticleRouter {
     const slug: string = req.body.slug;
     const summary: string = req.body.summary;
     const content: string = req.body.content;
-    const categories: string[] = req.body.categories;
+    const categories: string[] = [...req.body.categories];
     const createDate: Date = req.body.createDate;
-    const image: string = req.body.image;
+    const image = req.body.image;
+    let imageName = req.body.imageName;
     const tags: string = req.body.tags;
     const isDraft: boolean = req.body.isDraft;
+
+    imageName = Guid.create() + imageName;
 
     if (!title || !content || !summary || !slug) {
       res.status(409).json({ message: "All Fields Required." });
     }
-    const article = new Article({
+    const article: any = {
       title,
       slug,
       summary,
       content,
       categories: categories.map(c => ObjectID.createFromHexString(c)),
-      author: req.user,
       createDate,
-      image,
+      image: imageName,
       tags,
       isDraft,
       website: req.website
-    });
-    article
-      .save()
-      .then(data => {
-        res.status(200).json({ data });
+    };
+    if (req.user._id) {
+      article.author = req.user;
+      article.authorName = '';
+    }
+    else {
+      article.authorName = req.user.username;
+      article.author = null;
+    }
+    Article
+      .insertMany([article])
+      .then((data: any) => {
+        var base64Data = image.replace(/^data:image\/(png|jpg|jpeg)+;base64,/, "");
+        fs.writeFile('src/public/images/' + imageName, base64Data, { encoding: 'base64' }, (err: any) => { // TODO image paths, add id to image name
+          if (err) {
+            res.status(500).json({ err }); // TODO
+          }
+          else {
+            res.status(200).json({ success: true });
+          }
+        });
       })
-      .catch(error => {
+      .catch((error: any) => {
         res.status(500).json({ error });
       });
 
@@ -84,20 +134,38 @@ export class ArticleRouter {
     const slug: string = req.body.slug;
     const categories: string[] = req.body.categories;
 
-    const article = {
+    let imageName = Guid.create() + req.body.imageName;
+
+    const article: any = {
       title: req.body.title,
       summary: req.body.summary,
       content: req.body.content,
       categories: categories.map(c => ObjectID.createFromHexString(c)),
-      author: req.user,
       editDate: Date.now(),
-      image: req.body.image,
+      image: imageName,
+      imageName,
       tags: req.body.tags
     };
+    if (req.user._id) {
+      article.author = req.user;
+      article.authorName = '';
+    }
+    else {
+      article.authorName = req.user.username;
+      article.author = null;
+    }
 
     Article.findOneAndUpdate({ website: req.website, slug }, article)
       .then(data => {
-        res.status(200).json({ data });
+        var base64Data = req.body.image.replace(/^data:image\/(png|jpg|jpeg)+;base64,/, ""); // TODO delete previous image
+        fs.writeFile('src/public/images/' + imageName, base64Data, { encoding: 'base64' }, (err: any) => { // TODO image paths, add id to image name
+          if (err) {
+            res.status(500).json({ err }); // TODO
+          }
+          else {
+            res.status(200).json({ success: true });
+          }
+        });
       })
       .catch(error => {
         res.status(500).json({ error });
@@ -171,6 +239,7 @@ export class ArticleRouter {
 
   routes() {
     this.router.get("/list/", this.all);
+    this.router.get("/list-by-category/", this.allByCategory);
     this.router.get("/:slug", this.one);
     this.router.post("/create/", this.create);
     this.router.put("/:slug", this.update);

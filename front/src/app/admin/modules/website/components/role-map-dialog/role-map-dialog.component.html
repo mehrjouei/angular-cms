@@ -1,0 +1,28 @@
+<form [formGroup]="mapsForm" (ngSubmit)="onSubmit()">
+  {{this.mapsForm.errors | json}}
+  <div class="container" formArrayName="maps">
+    <div class="row" *ngFor="let map of maps.controls; let i=index" [formGroupName]="i">
+      <div class="col-sm">
+        <label>
+          name:
+          <input class="form-control" type="text" [formControlName]="'name'" placeholder="نام">
+        </label>
+      </div>
+      <div class="col-sm">
+        <label>
+          pair name:
+          <input class="form-control" type="text" [formControlName]="'pairName'" placeholder="نام دیگر">
+        </label>
+      </div>
+      <div class="col-sm">
+        <a href="javascript:void(0)" (click)="addMap(i)">
+          <i class="fas fa-plus-square"></i>
+        </a>
+        <a href="javascript:void(0)" (click)="removeMap(i)">
+          <i class="fas fa-trash"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!mapsForm.valid">Submit</button>
+</form>

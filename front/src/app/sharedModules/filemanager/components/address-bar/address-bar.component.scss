@@ -1,0 +1,37 @@
+#addressBar{
+    background-color: white;
+    padding:5px;
+    direction: ltr;
+    line-height: 0px;
+    .upBtn{
+        span{
+            background-image: url(/assets/images/filemanager/explorerviewicons.png);
+            background-position: 0 0;
+            display: inline-block;
+            width:16px;
+            height:16px;
+            vertical-align: top;
+                }
+        vertical-align: top;
+        padding:3px;
+        line-height: 10px;
+        display: inline-block;
+        border:1px solid transparent;
+        &:hover{
+            border:1px solid rgba(2,126,253,.33);
+            background-color: rgba(9,119,247,.05);
+        }
+    }
+    #addressBox{
+        display: inline-block;
+        border:1px solid #ccc;
+        height: 24px;
+        width:90%;
+        line-height: 24px;
+        padding-left:5px;
+        font-size: 13px;
+        color:rgb(109, 109, 109);
+        width:calc(100% - 30px);
+        vertical-align: top;
+    }
+}

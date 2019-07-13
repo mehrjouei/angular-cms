@@ -20,6 +20,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
 
   childComponentType: Type<any>;
   headerTitle;
+  size = 'medium';
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef,
     private dialogRef: DialogRef,
@@ -27,8 +28,11 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   ) {
     if (this.config.data && this.config.data.header) {
       this.headerTitle = this.config.data.header;
+      if (this.config.data.size) {
+        this.size = this.config.data.size;
+      }
     }
-   }
+  }
 
   ngAfterViewInit() {
     this.loadChildComponent(this.childComponentType);

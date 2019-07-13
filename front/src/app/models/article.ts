@@ -13,6 +13,7 @@ export class Article {
   createDate?: string;
   editDate?: string;
   image?: string;
+  imageName?: string;
   tags?: string;
   isDraft?: boolean;
   visitCount?: number;

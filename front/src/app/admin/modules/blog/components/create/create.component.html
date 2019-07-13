@@ -49,7 +49,8 @@
           <div class="col-sm">
             <div>
               <label for="image">عکس</label>
-              <input class="form-control" type="text" name="image" placeholder="عکس" formControlName="image" required>
+              <input class="form-control" type="file" name="image" placeholder="عکس" formControlName="image" (change)="onFileChange($event)" required>
+              <!-- <app-file-upload formControlName="image"></app-file-upload> -->
             </div>
           </div>
         </div>
@@ -74,7 +75,7 @@
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
           ایجاد
         </button>
-        <button routerLink="/admin/containers/list" class="btn btn-default" type="submit">
+        <button routerLink="/admin/blog/list" class="btn btn-default" type="submit">
           انصراف
         </button>
       </div>

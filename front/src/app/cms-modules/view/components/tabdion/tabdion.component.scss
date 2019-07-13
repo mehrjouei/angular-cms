@@ -1,0 +1,201 @@
+$content-height: 200px;
+
+@mixin item {
+  padding-top: 12px;
+  vertical-align: middle;
+  color: rgb(194, 190, 189);
+}
+
+.default {
+  .list {
+    direction: ltr;
+
+    .header {
+      text-align: start;
+      border-bottom: 1px solid #abc;
+
+      .tab {
+        height: 50px;
+        display: inline-block;
+        @include item;
+        margin-bottom: -1px;
+
+        &:hover {
+          cursor: pointer;
+          color: rgb(135, 138, 142);
+        }
+
+        &.selected {
+          color: rgb(78, 79, 81);
+          border: 1px solid #abc;
+          border-top: 3px solid rgb(247, 171, 8);
+          border-bottom: 1px solid #fff;
+        }
+
+        & .icon {
+          margin: 5px;
+        }
+
+        & .title {
+          margin: 5px;
+          font-size: 12px;
+        }
+
+        // &:active {
+        //   color: #212121;
+        // }
+      }
+    }
+
+    .content {
+      overflow: hidden;
+      padding: 5px;
+      height: $content-height;
+    }
+  }
+
+  .stack {
+    direction: ltr;
+
+    .accordion {
+
+      .trigger {
+        height: 50px;
+        display: block;
+        @include item;
+        padding-left: 5px;
+
+        &:hover {
+          cursor: pointer;
+          color: rgb(135, 138, 142);
+          background-color: rgb(239, 240, 242);
+        }
+
+        &.selected {
+          color: rgb(78, 79, 81);
+          border-left: 3px solid rgb(247, 171, 8);
+        }
+
+        & .icon {
+          margin: 5px;
+        }
+
+        & .title {
+          margin: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .content {
+        overflow: hidden;
+        transition: height 0.3s ease-out;
+
+        &.content-hidden {
+          height: 0;
+        }
+
+        &.content-show {
+          height: $content-height;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+.red {
+  .list {
+    direction: ltr;
+
+    .header {
+      text-align: start;
+      border-bottom: 1px solid #abc;
+
+      .tab {
+        height: 50px;
+        display: inline-block;
+        @include item;
+        margin-bottom: -1px;
+
+        &:hover {
+          cursor: pointer;
+          color: rgb(40, 204, 235);
+        }
+
+        &.selected {
+          color: rgb(24, 71259, 85);
+          border: 1px solid #abc;
+          border-top: 3px solid rgb(85, 185, 95);
+          border-bottom: 1px solid #fff;
+        }
+
+        & .icon {
+          margin: 5px;
+        }
+
+        & .title {
+          margin: 5px;
+          font-size: 12px;
+        }
+
+        // &:active {
+        //   color: #212121;
+        // }
+      }
+    }
+
+    .content {
+      overflow: hidden;
+      padding: 5px;
+      height: $content-height;
+    }
+  }
+
+  .stack {
+    direction: ltr;
+
+    .accordion {
+
+      .trigger {
+        height: 50px;
+        display: block;
+        @include item;
+        padding-left: 5px;
+
+        &:hover {
+          cursor: pointer;
+          color: rgb(75, 69, 95);
+          background-color: rgb(185, 185, 169);
+        }
+
+        &.selected {
+          color: rgb(169, 85, 95);
+          border-left: 3px solid rgb(75, 175, 85);
+        }
+
+        & .icon {
+          margin: 5px;
+        }
+
+        & .title {
+          margin: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .content {
+        overflow: hidden;
+        transition: height 0.3s ease-out;
+
+        &.content-hidden {
+          height: 0;
+        }
+
+        &.content-show {
+          height: $content-height;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

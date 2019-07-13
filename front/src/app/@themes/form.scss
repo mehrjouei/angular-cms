@@ -1,37 +1,29 @@
-form.form {
-  label {
-    display: block;
-    color: white;
-    font-size: 13px;
-    margin-top: 6px;
-    margin-bottom: 2px;
+.form {
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .col {
+      align-self: baseline;
+      label {
+        font-size: 12px;
+        font-weight: 500;
+        display: block;
+        color: #737373;
+        margin-bottom: 2px;
+      }
+    }
   }
-
-  input[type=text],
+  input,
   select {
-    border: 0;
-    height: 35px;
-    line-height: 45px;
     width: 100%;
-    padding: 0px 4px;
-    border-radius: 2px;
-    background-color: #bdc3c7;
-    font-family: 'yekan', tahoma, Verdana, sans-serif;
-  }
-
-  button.btn {
-    width: 100%;
+    min-width: 200px;
+    padding: 0px 3px;
+    font-family: inherit;
     height: 40px;
-    font-size: 14px;
-    border: 0;
-    border-radius: 3px;
-    border-bottom: 3px solid rgb(27, 27, 27);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-family: 'yekan', tahoma, Verdana, sans-serif;
-  }
-
-  button.btn.btn-success {
-    background-image: linear-gradient(to bottom, #2ecc71, #27ae60);
+    border-radius: 2px;
+    border: solid 1px #979797;
+    background-color: #ffffff;
   }
 }

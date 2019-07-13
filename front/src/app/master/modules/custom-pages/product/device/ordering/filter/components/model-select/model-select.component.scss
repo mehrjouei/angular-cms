@@ -1,0 +1,66 @@
+.carSelectBox{
+  padding:0px 10px;
+}
+
+.search {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.14);
+    padding: 5px 0px 12px 0px;
+    margin-bottom: 10px;
+}
+
+form {
+    input[type=text] {
+        background-color: #f3f3f3;
+        width:100%;
+        font-family: inherit;
+        padding-right:5px;
+    }
+}
+
+.list.container {
+    height: calc(100vh - 180px);
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.modelSelect {
+  ul {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      display: block;
+      li {
+          position: relative;
+          display: block;
+          margin-bottom: 5px;
+          box-sizing: border-box;
+          padding: 5px;
+          padding-right: 8px;
+          border-radius: 2px;
+          background-color: #f3f3f3;
+          text-align: right;
+          img {
+              max-width: 60px;
+              max-height: 40px;
+              vertical-align: middle;
+          }
+          .title {
+              position: absolute;
+              right: 70px;
+              top: 5px;
+              font-size: 15px;
+              margin-right: 5px;
+          }
+          .brandTitle {
+              position: absolute;
+              right: 70px;
+              top: 23px;
+              color: #8c8c8c;
+              font-size: 14px;
+              font-size: 13px;
+              margin-right: 5px;
+          }
+      }
+  }
+}
+

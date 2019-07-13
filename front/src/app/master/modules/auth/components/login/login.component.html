@@ -10,11 +10,21 @@
         <i class="fa fa-envelope"></i>
         <input type="text" placeholder="username" formControlName="username">
       </div>
+      <br>
       <div>
         <i class="fa fa-key"></i>
         <input type="password" placeholder="Password" formControlName="password">
       </div>
+      <br>
+      <div>
+        <input type="checkbox" formControlName="rememberMe">Remember Me
+        &nbsp;&nbsp;&nbsp;
+        <a [routerLink]="['/auth/forgot-password']">Forgot Password</a>
+      </div>
+      <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
       <button type="submit" [disabled]="!form.valid">Login</button>
+      <br>
+      <a [routerLink]="['/auth/sign-up']">Create Account</a>
     </form>
   </div>
 </div>

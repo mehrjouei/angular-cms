@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Page } from '../../models/Page';
-import { Template } from '../../models/Template';
-import { Role } from '../../models/Role';
+import { Page } from '../../models/page';
+import { Template } from '../../models/template';
+import { Role } from '../../models/role';
 
 @Injectable()
 export class ToolboxService { // TODO deeper!?

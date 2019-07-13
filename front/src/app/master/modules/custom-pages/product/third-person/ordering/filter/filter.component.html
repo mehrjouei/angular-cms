@@ -1,0 +1,60 @@
+<form #form="ngForm" (ngSubmit)="next()" class="form">
+  <div class="row">
+    <div class="col">
+      <label for="">نوع و مدل خودرو</label>
+      <div class="selectableDiv" (click)="chooseBrandAndModel()">
+        <input type="text" [value]="selectedCar">
+      </div>
+    </div>
+    <div class="col">
+      <label for="">نوع کاربری</label>
+      <select name="CarUsageType" [(ngModel)]="preOrder.CarUsageType" ngModel id="" required>
+        <option *ngFor="let u of usageTypes" [value]="u.value">{{u.text}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="">سال ساخت</label>
+      <select name="carCreationYear" [(ngModel)]="preOrder.carCreationYear" ngModel required>
+        <option *ngFor="let m of manuYear" [value]="m.value">{{m.text}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="">سابقه خسارت</label>
+      <app-radio-button [Items]="damageTypes" [selectedItemValue]="damaged?damageTypes[1].value : damageTypes[0].value"
+        (valueSelect)="damageValuSelect($event)"></app-radio-button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="">سالهای عدم خسارت</label>
+      <select name="NumberOfDiscountYearsOnPolicy" ngModel [(ngModel)]="preOrder.NumberOfDiscountYearsOnPolicy" id="" required>
+        <option *ngFor="let m of InsuranceSafePeriods" [value]="m.value">{{m.text}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="" >تاریخ سر رسید</label>
+      <app-date-picker name="SolarPolicyDueDate" [(ngModel)]="preOrder.SolarPolicyDueDate"></app-date-picker>
+    </div>
+    <div class="col">
+      <div *ngIf="damaged">
+        <label for="">تعداد خسارت مالی</label>
+        <select name="NumberOfFinancialDamage" [(ngModel)]="preOrder.NumberOfFinancialDamage" ngModel>
+          <option *ngFor="let m of damages" [value]="m.value">{{m.text}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col">
+      <div *ngIf="damaged">
+        <label for="">تعداد خسارت جانی</label>
+        <select name="NumberOfBodyDamage" [(ngModel)]="preOrder.NumberOfBodyDamage" ngModel>
+          <option *ngFor="let m of damages" [value]="m.value">{{m.text}}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+  <div class="btnBox">
+    <button class="btn btn-primary" [disabled]="!form.valid">مشاهده لیست بیمه ها</button>
+  </div>
+</form>

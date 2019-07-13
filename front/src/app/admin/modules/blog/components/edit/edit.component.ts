@@ -1,12 +1,12 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Article } from '../../../../../models/article';
 import { ArticleService } from '../../services/article.service';
 import { forkJoin } from 'rxjs';
 import { Category } from '../../../../../models/category';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../../../services/category.service';
 
 @Component({
   selector: 'admin-article-edit',
@@ -17,6 +17,9 @@ export class EditComponent implements OnInit {
   article: Article;
   categories: Category[] = [];
 
+  file;
+  image;
+
   form = this.fb.group({
     title: ['', Validators.required],
     slug: ['', Validators.required],
@@ -24,6 +27,7 @@ export class EditComponent implements OnInit {
     content: ['', Validators.required],
     categories: ['', Validators.required],
     image: ['', Validators.required],
+    imageName: ['NONE', Validators.required],
     tags: ['', Validators.required],
     isDraft: ['']
   });
@@ -33,7 +37,8 @@ export class EditComponent implements OnInit {
     private categoryService: CategoryService,
     private articleService: ArticleService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -50,12 +55,33 @@ export class EditComponent implements OnInit {
             summary: this.article.summary,
             content: this.article.content,
             categories: this.article.categories.map(_ => _._id),
-            image: this.article.image,
+            image: '', // TODO
+            imageName: 'NONE',
             tags: this.article.tags,
             isDraft: this.article.isDraft
           });
         });
     });
+  }
+
+  onFileChange(event) {
+    let reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      this.file = file;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        // this.form.patchValue({
+        //   image: reader.result
+        // });
+        this.image = reader.result;
+
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
   }
 
   onSubmit(form: FormGroup) {
@@ -65,7 +91,8 @@ export class EditComponent implements OnInit {
       summary: form.value.summary,
       content: form.value.content,
       categories: form.value.categories,
-      image: form.value.image,
+      image: this.image,
+      imageName: this.file.name,
       tags: form.value.tags,
       isDraft: form.value.isDraft
     };

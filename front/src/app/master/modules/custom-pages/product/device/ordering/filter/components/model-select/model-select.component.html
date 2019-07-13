@@ -1,0 +1,23 @@
+<div style="position: relative">
+  <div class="carChoose">
+    <div class="search">
+      <div class="carSelectBox">
+        <form action="">
+          <input type="text" #modelFilterText (keyup)="modelFilter(modelFilterText.value)" placeholder="نام مدل خودرو را جستجو کنید">
+        </form>
+      </div>
+    </div>
+    <div class="carSelectBox">
+      <div class="modelSelect">
+        <ul>
+          <li *ngFor="let model of modelFilteredList" (click)="selectModel(model)">
+            <img [src]="'/assets/devices/BrandsLogo/'+deviceKindId+'/'+brandId" alt="">
+            <span class="title">
+              {{model.name}}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<header>
+  <div class="container">
+    <a routerLink="/">
+      <img id="logo" src="/assets/images/logo.png" alt="">
+    </a>
+    <button id="loginBtn" *ngIf="!loggedIn" routerLink="/auth/login" class="btn btn-primary" >ورود / عضویت</button>
+    <button id="loginBtn" *ngIf="loggedIn" (click)="logout()" class="btn btn-primary" >خروج</button>
+    <ul id="menu">
+      <li>
+        <a routerLink="/">صفحه نخست</a>
+        <a routerLink="/">درباره ما</a>
+        <a routerLink="/">همکاری با ما</a>
+      </li>
+    </ul>
+  </div>
+</header>

@@ -1,0 +1,34 @@
+<div class="step">
+  <div class="container">
+    <form action="">
+      <div *ngIf="showKindSelect">
+        <label for="">وسیله</label>
+        <select [(ngModel)]="preOrder.deviceKindId" name="deviceKindId" (change)="onSelectDevice()" required>
+          <option *ngFor="let i of deviceList" [value]="i.deviceKindID">{{i.title}}</option>
+        </select>
+      </div>
+      <div *ngIf="preOrder.deviceKindId">
+        <label for="">برند</label>
+        <div (click)="chooseBrand()">
+          <input type="text" [value]="selectedBrandTitle" name="selectedBrand" disabled
+            placeholder="برند دستگاه را انتخاب کنید">
+        </div>
+      </div>
+      <div *ngIf="preOrder.brandId">
+        <label for="">مدل</label>
+        <div (click)="chooseModel()">
+          <input type="text" [value]="selectedModelTitle" name="selectedModel" disabled
+            placeholder="مدل دستگاه را انتخاب کنید">
+        </div>
+      </div>
+      <label for="">قیمت دستگاه</label>
+      <div id="priceInput">
+        <input type="number" [(ngModel)]="priceAmount" inputmode="numeric" inputmode="price" numbersOnly
+          name="nationalCode" ngModel required nationalCode>
+      </div>
+    </form>
+  </div>
+
+  <button class="nextBtn" [disabled]="!isValidated()" (click)="next()">تایید اطلاعات اولیه</button>
+  <div class="btnWhiteSpace">
+  </div>

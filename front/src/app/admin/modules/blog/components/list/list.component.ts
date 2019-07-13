@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Article } from '../../../../../models/article';
-import { TableColumn } from '@swimlane/ngx-datatable';
-import { Category } from '../../../../../models/category';
-import { DialogService } from '../../../../../sharedModules/dialog/dialog.service';
-import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';;
-import { CategoryService } from '../../services/category.service';
+import { TableColumn, DatatableComponent } from '@swimlane/ngx-datatable';
 import { ArticleService } from '../../services/article.service';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -17,13 +14,20 @@ export class ListComponent implements OnInit {
   @ViewChild('editTemplate') editTemplate: TemplateRef<any>;
   @ViewChild('categoriesTemplate') categoriesTemplate: TemplateRef<any>;
   @ViewChild('commentsTemplate') commentsTemplate: TemplateRef<any>;
+  @ViewChild('imageTemplate') imageTemplate: TemplateRef<any>;
+
+  @ViewChild(DatatableComponent) table: DatatableComponent;
+
+  categoryFilterForm = this.fb.group({
+    name: ['']
+  });
 
   articles: Article[] = [];
   columns: TableColumn[];
 
-  categories: Category[] = [];
+  totalCount = 0;
 
-  constructor(private categoryService: CategoryService, private articleService: ArticleService, public dialog: DialogService) {
+  constructor(private articleService: ArticleService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -36,7 +40,7 @@ export class ListComponent implements OnInit {
       { prop: 'author', name: 'نگارنده' },
       { prop: 'createDate', name: 'تاریخ ساخت' },
       { prop: 'editDate', name: 'تاریخ ویرایش' },
-      { prop: 'image', name: 'عکس' },
+      { prop: 'image', name: 'عکس', cellTemplate: this.imageTemplate },
       // { prop: 'tags', name: 'تگ ها' },
       { prop: 'isDraft', name: 'مخفی؟' },
       { prop: 'visitCount', name: 'مشاهده' },
@@ -45,9 +49,9 @@ export class ListComponent implements OnInit {
       { prop: '', name: 'ویرایش', cellTemplate: this.editTemplate },
 
     ];
-    this.articleService.list().subscribe((res: any) => {
+    this.articleService.listByCategory().subscribe((res: any) => { // TODO
       this.articles = res.data;
-      // this.addCategory(0);
+      this.totalCount = res.totalCount;
     });
   }
 
@@ -61,18 +65,15 @@ export class ListComponent implements OnInit {
     }
   }
 
-  manageCategories() {
-    this.dialog.open(CategoryDialogComponent, { data: {
-      doneBtnText: 'Confirm',
-      rejectBtnText: 'Cancel',
-      text: 'some stupid text'
-    }});
-  }
+  onCategoryFilterFormSubmit(form) {
+    const val = form.value.name;
 
-  // onChange(name: string): void {
-  //   this.table.apiEvent({
-  //     type: API.onGlobalSearch, value: name,
-  //   });
-  // }
+    this.articleService.listByCategory(val).subscribe((res: any) => {
+      this.articles = res.data;
+      this.totalCount = res.totalCount;
+      this.table.offset = 0;
+    });
+
+  }
 }
 

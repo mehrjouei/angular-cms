@@ -1,0 +1,18 @@
+.holder{
+    position: relative;
+    img{
+        width:100%;
+        z-index: 2;
+        position: relative;
+        vertical-align: top;
+        display: block;
+    }
+    .yellow{
+        position: absolute;
+        background-color: #f5a623;
+        top:0px;
+        bottom: 0px;
+        left:0px;
+        z-index: 1;
+    }
+}

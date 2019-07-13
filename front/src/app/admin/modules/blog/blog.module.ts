@@ -9,21 +9,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from '../../sharedModules/card/card.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ArticleService } from './services/article.service';
-import { CategoryService } from './services/category.service';
-import { CategoryDialogComponent } from './components/list/components/category-dialog/category-dialog.component';
-import { DialogModule } from 'src/app/sharedModules/dialog/dialog.module';
+import { FileUploadModule } from '../../../sharedModules/file-upload/file-upload.module';
 
 @NgModule({
-  declarations: [ListComponent, CreateComponent, EditComponent, CategoryDialogComponent],
+  declarations: [ListComponent, CreateComponent, EditComponent],
   imports: [
     CommonModule,
     BlogRoutingModule,
     ReactiveFormsModule,
     CardModule,
     NgxDatatableModule,
-    DialogModule
+    FileUploadModule
   ],
-  providers: [ArticleService, CategoryService],
-  entryComponents: [CategoryDialogComponent]
+  providers: [ArticleService]
 })
 export class BlogModule { }

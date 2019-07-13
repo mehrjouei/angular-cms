@@ -1,0 +1,10 @@
+<!-- <div id="body" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)"> -->
+<div id="body">
+  <span #selectionArea class="selection-area">
+  </span>
+  <ul *ngIf="currentFile" [ngClass]="layout">
+    <li *ngFor="let i of currentFile.children">
+      <filemanager-body-items [fileOrdDirectory]="i"></filemanager-body-items>
+    </li>
+  </ul>
+</div>

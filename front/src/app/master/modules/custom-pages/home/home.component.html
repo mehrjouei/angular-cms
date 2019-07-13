@@ -1,11 +1,26 @@
 <div class="container">
-    <div class="slide">
-      <img src="assets/images/khe-sanh.png" alt="" height="500px" width="500px">
+  <app-home-insurances [insuranceTypes]="insuranceTypes"></app-home-insurances>
+  <div class="titlePart">
+  </div>
+  <div id="contentPart">
+
+    <div class="orangeTitleLine"></div>
+    <div class="titleBox">
+      <div>
+        <span class="firstPart">
+          بیشتر
+        </span>
+        <span class="secondPart">
+          بدانید
+        </span>
+      </div>
+      <div class="subTitle">
+        با قوانین جدید آشنا شوید
+      </div>
     </div>
-    <div>
+    <div id="contentPart">
       <div class="right-col" data-pane="rightHolder"></div>
       <div class="center-col" data-pane="middleHolder"></div>
-      <!-- <div class="contentHolder" [appGuestOutlet]="'rightHolder'">Right</div> -->
       <div class="left-col" data-pane="leftHolder"></div>
     </div>
-</div>
+  </div>

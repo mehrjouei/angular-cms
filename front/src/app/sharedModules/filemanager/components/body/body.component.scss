@@ -1,0 +1,35 @@
+#body {
+  height: 450px;
+  background-color: white;
+  color: black;
+  position: relative;
+
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+
+    li {
+      display: inline-block;
+    }
+
+    &.large {
+      li {
+        width: 66px;
+        margin: 3px;
+      }
+    }
+  }
+}
+
+.selection-area {
+  width: 0;
+  height: 0;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  background-color: #87CEFA;
+  z-index: 9999;
+  opacity: 0.5;
+  // transition: all .2s linear .1s;
+}

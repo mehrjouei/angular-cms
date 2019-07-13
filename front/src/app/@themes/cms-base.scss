@@ -1,0 +1,44 @@
+@font-face {
+  font-family: yekan;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/assets/fonts/yekan/eot/iranyekanwebbold(fanum).eot');
+  src: url('/assets/fonts/yekan/eot/iranyekanwebbold(fanum).eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/assets/fonts/yekan/woff2/iranyekanwebbold(fanum).woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/assets/fonts/yekan/woff/iranyekanwebbold(fanum).woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/assets/fonts/yekan/ttf/iranyekanwebbold(fanum).ttf') format('truetype');
+}
+
+@font-face {
+  font-family: yekan;
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/yekan/eot/iranyekanweblight(fanum).eot');
+  src: url('/assets/fonts/yekan/eot/iranyekanweblight(fanum).eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/assets/fonts/yekan/woff2/iranyekanweblight(fanum).woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/assets/fonts/yekan/woff/iranyekanweblight(fanum).woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/assets/fonts/yekan/ttf/iranyekanweblight(fanum).ttf') format('truetype');
+}
+
+@font-face {
+  font-family: yekan;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/fonts/yekan/eot/iranyekanwebregular(fanum).eot');
+  src: url('/assets/fonts/yekan/eot/iranyekanwebregular(fanum).eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/assets/fonts/yekan/woff2/iranyekanwebregular(fanum).woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/assets/fonts/yekan/woff/iranyekanwebregular(fanum).woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/assets/fonts/yekan/ttf/iranyekanwebregular(fanum).ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding:0px;
+  font-family: 'yekan',tahoma,Verdana, sans-serif;
+  direction: rtl;
+}

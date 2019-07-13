@@ -70,7 +70,11 @@ let ArticleSchema: Schema = new Schema({
   author: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    // required: true
+  },
+  authorName: {
+    type: String
+    // required: true
   },
   createDate: {
     type: Date,

@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { CustomPagesRoutingModule } from './custom-pages-routing.module';
 import { CustomPagesComponent } from './custom-pages.component';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [HomeComponent, CustomPagesComponent],
+  declarations: [CustomPagesComponent],
   imports: [
     CommonModule,
     CustomPagesRoutingModule

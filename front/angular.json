@@ -30,7 +30,11 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "es5BrowserSupport": true,
+            "lazyModules": [
+              "src/app/toolbox/toolbox.module",
+              "src/app/cms-modules/edit/edit.module"
+            ]
           },
           "configurations": {
             "production": {

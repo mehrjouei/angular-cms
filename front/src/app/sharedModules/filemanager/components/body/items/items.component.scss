@@ -1,0 +1,27 @@
+.item{
+    cursor: pointer;
+    user-select: none;
+
+    &.selected {
+      background-color: #B0C4DE;
+    }
+}
+.large{
+    text-align: center;
+    .icon{
+        vertical-align: top;
+        img{
+            max-width: 50px;
+            vertical-align: top;
+        }
+    }
+    .title{
+        font-size: 10px;
+        color:rgb(65, 65, 65);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+
+    }
+}

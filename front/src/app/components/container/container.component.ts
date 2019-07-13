@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactory, ComponentRef, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GuestDirective } from 'src/app/sharedModules/guest/directives/guest-outlet.directive';
-import { EditDialogComponent } from 'src/app/toolbox/components/edit-dialog/edit-dialog.component';
+import { EditDialogComponent } from 'src/app/components/edit-dialog/edit-dialog.component';
 import { DialogService } from 'src/app/sharedModules/dialog/dialog.service';
 import { PageService } from 'src/app/services/page.service';
 import { BusService } from 'src/app/services/bus.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { MoveDialogComponent } from '../move-dialog/move-dialog.component';
 
 @Component({
   selector: 'app-container',
@@ -17,33 +18,34 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
   @ViewChild('target') target: ElementRef;
   @ViewChild('module') module: ElementRef;
 
-  @Input() html: string;
+  // @Input() html: string;
+  @Input() container: any;
   @Input() partId: string;
   @Input() pageSlug: string;
   @Input() title: string;
-  @Input() data: object;
+  @Input() data: any;
   @Input() moduleType: string;
   @Input() guestComponentFactory: ComponentFactory<any>;
 
   private guestComponentRef: ComponentRef<any>;
-  showEditBtns:boolean=false;
+  showEditBtns = false;
   constructor(
     private sanitizer: DomSanitizer,
-     private dialog: DialogService,
-      private pageService: PageService,
-       private bus: BusService,
-       private storage:StorageService
-       ) {
-         this.storage.getStorage("editMode").behaviorSubject.subscribe(x=>{
-          this.showEditBtns=x;
-         });
-       }
-   // TODO
+    private dialog: DialogService,
+    private pageService: PageService,
+    private bus: BusService,
+    private storage: StorageService
+  ) {
+    this.storage.getStorage('editMode').behaviorSubject.subscribe(x => {
+      this.showEditBtns = x;
+    });
+  }
+  // TODO
 
   ngOnInit() {
     this.guestComponentRef = this.guestOutlet.viewContainerRef.createComponent(this.guestComponentFactory);
     this.guestComponentRef.instance.data = this.data;
-    this.target.nativeElement.insertAdjacentHTML('beforeend', this.html);
+    this.target.nativeElement.insertAdjacentHTML('beforeend', this.container.html);
     this.target.nativeElement.querySelector('[data-content]').appendChild(this.module.nativeElement);
     this.target.nativeElement.querySelector('[data-title]').insertAdjacentHTML('beforeend', this.title);
   }
@@ -54,9 +56,24 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
         text: 'edit dialog',
         moduleType: `edit-${this.moduleType}`,
         data: this.data,
+        header: 'ویرایش ماژول',
         partId: this.partId,
+        title: this.title,
+        container:this.container,
         pageSlug: this.pageSlug
       }
+    });
+  }
+
+  onMove(e) {
+    this.dialog.open(MoveDialogComponent, {
+      data: {
+        text: 'move dialog',
+        header: 'جا به جایی ماژول',
+        panes: document.querySelectorAll('[data-pane]'),
+        partId: this.partId,
+        pageSlug: this.pageSlug
+    }
     });
   }
 
@@ -67,10 +84,16 @@ export class ContainerComponent implements OnInit { // TODO inherit base compone
         this.bus.addModule({}); // TODO change name
       });
     }
-    // this.dialog.open(EditDialogComponent, {
-    //   data: {
-    //     text: 'delete dialog'
-    //   }
+  }
+
+  onDropped(e) {
+    console.log('dropped');
+    const part = {
+      _id: this.partId,
+      pane: ''
+    };
+    // this.pageService.movePart(this.pageSlug, part).subscribe(res => {
+    //   this.bus.addModule({});
     // });
   }
 }

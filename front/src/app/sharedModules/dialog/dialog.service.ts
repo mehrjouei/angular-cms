@@ -4,21 +4,19 @@ import { DialogComponent } from './dialog.component';
 import { DialogInjector } from './dialog-injector';
 import { DialogConfig } from './dialog-config';
 import { DialogRef } from './dialog-ref';
-// import { BackButtonService } from 'src/app/services/back-button.service';
 
 @Injectable(
   {
-  providedIn: DialogModule
-}
+    providedIn: DialogModule
+  }
 )
 export class DialogService {
   dialogComponentRef: ComponentRef<DialogComponent>;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-     private appRef: ApplicationRef,
-      private injector: Injector,
-      // private backBtn:BackButtonService
-      ) { }
+    private appRef: ApplicationRef,
+    private injector: Injector,
+  ) { }
 
   public open(componentType: Type<any>, config: DialogConfig) {
     const dialogRef = this.appendDialogComponentToBody(config);
@@ -29,7 +27,6 @@ export class DialogService {
   }
 
   private appendDialogComponentToBody(config: DialogConfig) {
-    // this.backBtn.dialogState.isVisible=true;
     const map = new WeakMap();
     map.set(DialogConfig, config);
 
@@ -59,7 +56,6 @@ export class DialogService {
   }
 
   private removeDialogComponentFromBody() {
-    // this.backBtn.dialogState.isVisible=false;
     this.appRef.detachView(this.dialogComponentRef.hostView);
     this.dialogComponentRef.destroy();
   }

@@ -1,0 +1,2 @@
+<div *ngIf="data != undefined" [innerHTML]="sanitizer.bypassSecurityTrustHtml(data.content)"></div>
+<div *ngIf="data == undefined">بدون محتوا ...</div>

@@ -1,0 +1,44 @@
+.tabsMenu {
+  list-style: none;
+  padding: 0px;
+  padding-right: 5px;
+  margin: 0px;
+  display: block;
+  border-bottom: 1px solid #6e6e6e;
+
+  li {
+    display: inline-block;
+    border-right: 1px solid #888;
+    border-left: 1px solid #888;
+    border-top: 1px solid #888;
+    margin-left:4px;
+    padding: 7px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    &.active {
+      background-color: #6e6e6e;
+      border-color: #6e6e6e;
+      color: white;
+    }
+  }
+}
+#tabs {
+  padding: 10px;
+  .tab {
+    display: none;
+    &.visible {
+      display: block;
+    }
+
+    .title{
+      margin:5px 0px;
+      padding:0px;
+      font-size: 13px;
+    }
+  }
+}
+
+.btn {
+  margin-left: 7px;
+  margin-top: 10px;
+}

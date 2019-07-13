@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="text">
+    {{(data)?data.text:''}}
+  </div>
+</div>
+<button class="btn btn-modal-success" (click)="done()">
+  {{(data)?data.doneBtnText:''}}
+</button>
+<button class="btn btn-modal" (click)="reject()">
+  {{(data)?data.rejectBtnText:''}}
+</button>

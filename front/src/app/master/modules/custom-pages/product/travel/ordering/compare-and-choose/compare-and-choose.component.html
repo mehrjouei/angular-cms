@@ -1,0 +1,51 @@
+<div class="filters">
+  <div class="right">
+    <label for="">سطح تعهدات مالی</label>
+    <select name="" id="" (change)="financialCoverageAmountSelect($event.target)">
+      <option *ngFor="let i of coverageAmounts" [value]="i.value">{{i.text}}</option>
+    </select>
+  </div>
+  <!-- <div class="right">
+    <label for="">مدت</label>
+    <select name="" id="" (change)="insurancePeriodsSelect($event.target)">
+      <option *ngFor="let i of InsurancePeriods" [value]="i.value">{{i.text}}</option>
+    </select>
+  </div> -->
+
+  <div class="left">
+    <label for="">مرتب سازی</label>
+    <select name="" id="" (change)="sortSelect($event.target)">
+      <option *ngFor="let i of sortTypes" [value]="i.value">{{i.text}}</option>
+    </select>
+  </div>
+  <div style="clear:both"></div>
+</div>
+<div class="results">
+  <ul>
+    <li *ngFor="let item of results">
+      <span class="logo">
+        <img [src]="environment.ImageResourcesAdress+'/CompanyLogo/'+item.companyIconName" alt="">
+      </span>
+      <div class="starBox">
+        <span class="starTitle">طرح</span>
+        <div class="starHolder">
+          {{item.zoneCaption}}
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="starBox shoab">
+        <span class="starTitle">سرویس‌دهنده</span>
+        <span class="starHolder">
+          {{item.serviceProviders}}
+        </span>
+        <div class="clear"></div>
+      </div>
+
+      <div class="price">
+        {{item.amountByDiscount/10|number:'0.0-0'}}
+        <span class="tuman">تومان</span>
+      </div>
+
+    </li>
+  </ul>
+</div>

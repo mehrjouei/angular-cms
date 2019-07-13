@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
 import Resources from '../models/Resources';
-import * as app from '../server';
 import Roles from '../models/Roles';
 import User from '../models/User';
 class ResourcesRouter {

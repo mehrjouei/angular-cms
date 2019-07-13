@@ -1,0 +1,49 @@
+<card>
+  <card-header [title]="'ایجاد نقش'"></card-header>
+  <card-body>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="name">نام:</label>
+              <input class="form-control" type="text" name="name" placeholder="نام" formControlName="name" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="status">وضعیت:</label>
+              <input class="form-control" type="text" name="status" placeholder="وضعیت" formControlName="status"
+                required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div>
+              <label for="description">توضیحات:</label>
+              <input class="form-control" type="text" name="description" placeholder="توضیحات"
+                formControlName="description" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <label for="resources">منابع:</label>
+          <select class="form-control" formControlName="resources" multiple style="height: 500px">
+            <option *ngFor="let res of resources" [value]="res._id">{{res.description || res.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="btnsBox">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+          تأیید
+        </button>
+        <button routerLink="/admin/roles/list" class="btn btn-default" type="submit">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </card-body>
+</card>

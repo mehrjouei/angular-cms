@@ -12,7 +12,7 @@
       <span *ngIf="!value">-</span>
     </ng-template>
     <ng-template #editTemplate let-row="row" let-value="value" let-i="index">
-      <a class="btn btn-small btn-primary" routerLink="/admin/pages/edit/{{value}}">ویرایش</a>
+      <a class="btn btn-small btn-primary" [routerLink]="['/admin/pages/edit']" [queryParams]="{slug: value}">ویرایش</a>
       <a class="btn btn-small btn-danger" (click)="onDelete(row,i)">حذف</a>
     </ng-template>
     <div class="btnBox">

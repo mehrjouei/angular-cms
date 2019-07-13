@@ -1,0 +1,232 @@
+.filters {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: white;
+
+    li {
+      display: inline-block;
+      width: 49%;
+      padding: 5px 2px;
+      background-color: white;
+      box-sizing: border-box;
+      border-left: 1px dashed rgba(151, 151, 151, 0.31);
+      text-align: center;
+      position: relative;
+
+      &:last-child {
+        border-left: 0;
+      }
+
+      .title {
+        font-size: 10px;
+        font-weight: bold;
+      }
+
+      &.tipActive {
+        z-index: 997;
+      }
+    }
+  }
+}
+
+.results {
+  ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+
+    li {
+      box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+      background-color: #d8d8d8;
+      margin-top: 6px;
+      text-align: center;
+      position: relative;
+
+      .block {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 6px 0px;
+        vertical-align: top;
+        min-height: 65px;
+      }
+
+      .logo {
+        width: 22%;
+        padding: 0;
+        vertical-align: middle;
+
+        img {
+          max-width: 75%;
+          max-height: 55px;
+          vertical-align: middle;
+          margin-top: 5px;
+        }
+      }
+
+      .stars {
+        width: 22%;
+        background-color: #eae9e9;
+
+        .fivestar {
+          padding: 5px;
+          margin-top: 10px;
+        }
+
+        .text {
+          font-size: 7px;
+        }
+      }
+
+      .dealers {
+        width: 22%;
+        background-color: #eae9e9;
+
+        .count {
+          font-size: 12px;
+          margin-top: 10px;
+        }
+
+        .text {
+          font-size: 7px;
+        }
+      }
+
+      .price {
+        width: 34%;
+        font-size: 13px;
+        position: relative;
+
+        .unit {
+          font-size: 10px;
+        }
+
+        .pricewith {
+          margin-top: 20px;
+          line-height: 10px;
+        }
+
+        .amountWithoutDiscount {
+          // position: absolute;
+          // right: 11px;
+          font-size: 10px;
+          // bottom: -11px;
+          color: #898989;
+          text-decoration: line-through;
+        }
+      }
+
+      .discount {
+        position: absolute;
+        left: 0px;
+        top: 5px;
+        background-color: #dd2810;
+        color: white;
+        font-size: 10px;
+        padding-right: 12px;
+        padding-left: 2px;
+
+        &::before {
+          content: ' ';
+          background-color: #d8d8d8;
+          display: block;
+          position: absolute;
+          right: -10px;
+          top: 1px;
+          -webkit-transform: rotate(90deg);
+          transform: rotate(45deg);
+          height: 15px;
+          /* border: 1px solid black; */
+          width: 15px;
+        }
+      }
+    }
+  }
+}
+
+.no-result {
+  padding-top: 10px;
+  text-align: center;
+  color: #ffffff;
+
+  img {
+    max-width: 130px;
+  }
+
+  h2 {
+    font-size: 17px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #d3d3d3;
+  }
+}
+
+.helpOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 996;
+  height: calc(100% - 54px);
+  top: 54px;
+  left: 0px;
+  padding-top: 80px;
+  box-sizing: border-box;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+  background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.62), rgba(0, 0, 0, 0.84));
+
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: #d3d3d3;
+
+    li {
+      display: none;
+
+      h3 {
+        color: white;
+        font-size: 18px;
+        margin: 5px 0px;
+      }
+
+      .content {
+        text-align: justify;
+      }
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+
+.overlayArrows {
+  position: absolute;
+  z-index: 999;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+  height: 0px;
+
+  img {
+    position: absolute;
+    top: 0px;
+    height: 75px;
+    width: 75px;
+  }
+
+  #tip1 {
+    right: 30%;
+    right: calc(30% - 10px);
+  }
+
+  #tip2 {
+    right: 30%;
+    right: calc(30% - 40px);
+  }
+}

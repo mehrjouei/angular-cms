@@ -8,8 +8,15 @@ const routes: Routes = [
     path: '',
     component: CustomPagesComponent,
     children: [
-      { path: 'home', component: HomeComponent},
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {
+        path: 'home',
+        loadChildren: "./home/home.module#HomeModule",
+      },
+      {
+        path: 'product',
+        loadChildren: './product/product.module#ProductModule'
+      },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
     ]
   }
 ];

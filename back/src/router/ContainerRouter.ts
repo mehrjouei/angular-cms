@@ -12,7 +12,7 @@ export class ContainerRouter {
 
   // get all of the containers in the database
   public all(req: any, res: Response): void {
-    Container.find({}) // TODO predicate nadare
+    Container.find({ website: req.website }) // TODO predicate nadare
       .then(data => {
         res.status(200).json({ data });
       })
@@ -25,7 +25,7 @@ export class ContainerRouter {
   public one(req: any, res: Response): void {
     const _id = ObjectID.createFromHexString(req.params._id);
 
-    Container.findOne({ _id })
+    Container.findOne({ _id, website: req.website })
       .then(data => {
         res.status(200).json({ data });
       })
@@ -46,7 +46,8 @@ export class ContainerRouter {
     const container = new Container({
       name,
       html,
-      image
+      image,
+      website: req.website
     });
 
     container
@@ -63,7 +64,7 @@ export class ContainerRouter {
   public update(req: any, res: Response): void {
     const _id = ObjectID.createFromHexString(req.params._id);
 
-    Container.findOneAndUpdate({ _id }, req.body)
+    Container.findOneAndUpdate({ _id, website: req.website }, req.body)
       .then(data => {
         res.status(200).json({ data });
       })
@@ -76,7 +77,7 @@ export class ContainerRouter {
   public delete(req: any, res: Response): void {
     const _id = ObjectID.createFromHexString(req.params._id);
 
-    Container.findOneAndRemove({ _id })
+    Container.findOneAndRemove({ _id, website: req.website })
       .then(() => {
         res.status(204).end();
       })

@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" class="editform" (ngSubmit)="onSubmit()">
   <label>ماژول:</label>
   <ul id="moduleList">
     <li *ngFor="let module of modules">
@@ -14,8 +14,10 @@
 
   <label>عنوان:</label>
   <input  placeholder="عنوان" formControlName="title" type="text">
+  <!-- <label>داده ورودی:</label>
+  <input  placeholder="داده ورودی" formControlName="data" type="text" style="direction: ltr"> -->
   <label>قاب:</label>
-  <select formControlName="pane" type="text">
+  <select formControlName="pane">
     <option *ngFor="let i of panes" [value]="i.dataset.pane">{{i.dataset.pane}}</option>
   </select>
   <label>طرح قاب:</label>

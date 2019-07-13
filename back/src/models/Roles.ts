@@ -19,7 +19,12 @@ let RolesSchema: Schema = new Schema({
   resources: [{
     type: Schema.Types.ObjectId,
     ref: 'Resources'
-  }]
+  }],
+  website: {
+    type: Schema.Types.ObjectId,
+    ref: "Website",
+    // required: true
+  }
 });
 
 export default model('Roles', RolesSchema);

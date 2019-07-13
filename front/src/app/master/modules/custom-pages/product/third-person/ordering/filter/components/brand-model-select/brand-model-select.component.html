@@ -1,0 +1,62 @@
+<div>
+  <div class="brandChoose" *ngIf="step==1">
+    <div class="search">
+      <div class="brandSelectBox">
+        <form action="">
+          <input type="text" #brandFilterText (keyup)="brandFilter(brandFilterText.value)"
+            placeholder="نام برند خودرو را جستجو کنید">
+        </form>
+      </div>
+    </div>
+    <div class="list">
+      <div class="brandSelectBox">
+        <div class="brandSelect">
+          <ul>
+            <li *ngFor="let car of carFilteredList;let counter=index" [ngClass]="counter%3==2 ? 'leftEdge':''"
+              (click)="selectBrand(car)">
+              <div>
+                <img [src]="environment.ImageResourcesAdress+'/BrandLogo/'+car.icon" alt="">
+              </div>
+              <div class="title">
+                {{car.title}}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carChoose" *ngIf="step==2">
+    <div class="backToEditBrand">
+      <div>
+        {{selectedBrand.title}}
+        <span class="edit" (click)="step=1">ویرایش برند</span>
+      </div>
+    </div>
+    <div class="search">
+      <div class="brandSelectBox">
+        <form action="">
+          <input type="text" #carFilterText (keyup)="carFilter(carFilterText.value)"
+            placeholder="نام مدل خودرو را جستجو کنید">
+        </form>
+      </div>
+    </div>
+    <div class="brandSelectBox">
+      <div class="list">
+        <div class="modelSelect">
+          <ul>
+            <li *ngFor="let model of selectedBrandCarFilterdList" (click)="selectCar(model)">
+              <img [src]="environment.ImageResourcesAdress+'/BrandLogo/'+selectedBrand.icon" alt="">
+              <span class="title">
+                {{model.title}}
+              </span>
+              <span class="brandTitle">
+                {{selectedBrand.title}}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

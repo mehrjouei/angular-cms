@@ -1,0 +1,29 @@
+<div *ngIf="!data.items.length; else expose">NO_DATA</div>
+<ng-template #expose>
+  <div [ngClass]="data.theme">
+    <div class="list" *ngIf="data.mode == modes.horizontal">
+      <div class="header">
+        <a [ngClass]="{ 'tab': true, 'selected': item.index === selected.index }" *ngFor="let item of data.items"
+          (click)="onSelect($event, item)">
+          <i [class]="'icon fa fa-' + item.icon"></i>
+          <span class="title">{{item.title}}</span>
+        </a>
+      </div>
+      <div class="content" [innerHTML]="getContent(selected.index)" [@tabAnimation]="'in'">
+      </div>
+    </div>
+
+    <div class="stack" *ngIf="data.mode == modes.vertical">
+      <div class="accordion" *ngFor="let item of data.items">
+        <a class="trigger" [ngClass]="{ 'selected': item.index === selected.index }" (click)="onSelect($event, item)">
+          <i [class]="'icon fa fa-' + item.icon"></i>
+          <span class="title">{{item.title}}</span>
+        </a>
+        <div
+          [ngClass]="{ 'content': true, 'content-show': item.index === selected.index, 'content-hidden': item.index !== selected.index }"
+          [innerHTML]="getContent(item.index)">
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
